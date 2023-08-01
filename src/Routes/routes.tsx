@@ -1,3 +1,4 @@
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import {
   AnimeDetail,
@@ -14,8 +15,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <AnimeList /> },
       { path: "anime/:Animeid", element: <AnimeDetail /> },
-      { path: "collections/", element: <CollectionList /> },
-      { path: "collections/:collectionId", element: <CollectionDetail /> },
+      { path: "collection/", element: <CollectionList /> },
+      { path: "collection/:collectionId", element: <CollectionDetail /> },
     ],
   },
 ]);
