@@ -8,6 +8,7 @@ import {
   useAnimeListCtx,
 } from "../../../utils/context/AnimeList";
 
+
 export default function Page() {
   const useAnimeListContext = useAnimeData();
 
@@ -19,7 +20,7 @@ export default function Page() {
 }
 
 function Content() {
-  const { loading } = useAnimeListCtx();
+  const { loading} = useAnimeListCtx();
 
   return (
     <div css={[globalStyles.flexCol, globalStyles.widthFull]}>

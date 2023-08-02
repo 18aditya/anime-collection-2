@@ -12,6 +12,8 @@ export interface media {
     bannerImage: string;
   };
   description: string;
+  genres: Array<string>;
+  averageScore: number;
 }
 
 interface Image {

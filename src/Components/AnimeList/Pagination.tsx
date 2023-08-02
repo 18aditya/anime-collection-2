@@ -4,6 +4,7 @@ import { css } from "@emotion/react";
 import { GrPlay, GrFastForward } from "react-icons/gr";
 import * as globalStyles from "../../utils/styles/global";
 import { useAnimeListCtx } from "../../utils/context/AnimeList";
+import GlobalStyles from "../../globalStyles";
 
 export default function Pagination() {
   const {
@@ -29,7 +30,15 @@ export default function Pagination() {
 
   return (
     <div css={paginationStyle}>
-      <div>
+      <div
+        css={[
+          globalStyles.flexRow,
+          css`
+            justify-content: space-between;
+            width: 50px;
+          `,
+        ]}
+      >
         <GrFastForward
           css={css`
             transform: rotate(180deg);
@@ -49,12 +58,12 @@ export default function Pagination() {
           css`
             justify-content: space-between;
             align-items: center;
-            width: 150px;
+            width: 140px;
           `,
         ]}
       >
         <div css={globalStyles.flexRow}>
-          <div>Page {data?.Page.currentPage}</div> /{" "}
+          <div>Page {data?.Page.currentPage}</div> /
           <div>{data?.Page.lastPage}</div>
         </div>
         <div css={pageStyle}>
@@ -84,7 +93,15 @@ export default function Pagination() {
           </div>
         </div>
       </div>
-      <div>
+      <div
+        css={[
+          globalStyles.flexRow,
+          css`
+            justify-content: space-between;
+            width: 50px;
+          `,
+        ]}
+      >
         <GrPlay onClick={handlePageNext} />
         <GrFastForward onClick={handleLastPage} />
       </div>

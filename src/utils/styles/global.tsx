@@ -21,3 +21,12 @@ export const flexCenter = css`
   justify-content: center;
   align-items: center;
 `;
+
+export const layoutContainer = [
+  flexCol,
+  widthFull,
+  css`
+    position: relative;
+    height: calc(100vh - 66px);
+  `,
+];

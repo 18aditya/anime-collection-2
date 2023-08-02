@@ -1,5 +1,5 @@
-import React, { createContext, useContext } from "react";
-import { Media, PageProperties } from "../interface/interface";
+import { createContext, useContext } from "react";
+import { Media } from "../interface/interface";
 import { ApolloError } from "@apollo/client";
 
 interface AnimeDetailHooks {

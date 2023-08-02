@@ -5,6 +5,7 @@ import { navBarConstant } from "../../constant/navbar";
 import { Outlet, Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { css } from "@emotion/react";
+import * as globalStyles from "../../utils/styles/global";
 
 export default function Layout(): JSX.Element {
   const { optionState, handleShowOption } = useLayoutHooks();
@@ -30,11 +31,7 @@ export default function Layout(): JSX.Element {
 
       <main css={mainContainer(optionState)}>
         <div css={layerDisable(optionState)}>
-          <div
-            css={css`
-              width: 100%;
-            `}
-          >
+          <div css={[globalStyles.flexCol, globalStyles.widthFull]}>
             <Outlet />
           </div>
         </div>

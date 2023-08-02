@@ -40,6 +40,7 @@ export const getAnimeDetailByID: DocumentNode = gql`
       title {
         english
       }
+      genres
       format
       type
       popularity
@@ -53,6 +54,8 @@ export const getAnimeDetailByID: DocumentNode = gql`
         color
       }
       bannerImage
+      averageScore
+      
     }
   }
 `;

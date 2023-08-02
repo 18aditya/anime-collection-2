@@ -15,8 +15,16 @@ export default function AnimeList() {
     <>
       {data?.Data.map((dt: Media, index: number) => (
         <Link to={`/anime/${dt.id}`} key={index} css={cardStyle}>
-          <img src={dt.assets.coverImage.medium} css={coverImage} />
-          <img src={dt.assets.bannerImage} css={bannerImage} />
+          <img
+            src={dt.assets.coverImage.large}
+            css={coverImage}
+            alt={dt.assets.coverImage.medium}
+          />
+          <img
+            src={dt.assets.bannerImage}
+            css={bannerImage}
+            alt={`${dt.title}.png`}
+          />
           <div css={cardDetail}>
             <div css={animeDetails}>
               <div> {dt.title}</div>

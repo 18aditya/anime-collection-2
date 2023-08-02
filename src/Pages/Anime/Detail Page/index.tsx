@@ -21,11 +21,18 @@ export default function Page() {
 }
 
 function Content() {
-  const { loading, data } = useAnimeDetailCtx();
+  const { data } = useAnimeDetailCtx();
   console.log(data);
   return (
-    <div css={[globalStyles.flexCol, globalStyles.widthFull]}>
-      <div css={[globalStyles.flexCol]}>
+    <>
+      <div
+        css={[
+          globalStyles.flexCol,
+          css`
+            height: 100vh;
+          `,
+        ]}
+      >
         <div
           css={[
             css`
@@ -38,13 +45,56 @@ function Content() {
           {data?.title}
         </div>
         <div css={[globalStyles.flexRow]}>
-          <img src={data?.assets.coverImage.large} css={coverImage} />
-          <div css={detailContainer}>
-            <div></div>
+          <img
+            src={data?.assets.coverImage.large}
+            css={coverImage}
+            alt={data?.assets.coverImage.medium}
+          />
+          <div css={[globalStyles.flexCol, detailContainer]}>
+            <div
+              css={css`
+                font-size: 30px;
+                font-weight: 700;
+              `}
+            >
+              {(data?.averageScore || 0) / 10}
+            </div>
+            <div
+              css={css`
+                font-size: 25px;
+                font-weight: 400;
+              `}
+            >
+              {data?.format}
+            </div>
+            <div
+              css={css`
+                font-size: 25px;
+                font-weight: 400;
+              `}
+            >
+              {`${data?.duration} Minutes`}
+            </div>
+            <div
+              css={css`
+                font-size: 25px;
+                font-weight: 400;
+              `}
+            >
+              {data?.status}
+            </div>
+            <div
+              css={css`
+                font-size: 25px;
+                font-weight: 400;
+              `}
+            >
+              {data?.episodes}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 const image = css`
