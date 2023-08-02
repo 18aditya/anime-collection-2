@@ -9,32 +9,31 @@ export default function Layout(): JSX.Element {
 
   return (
     <div css={mainComponent}>
-      <nav css={navBar}>
-        <li>
-          <Link to="/" css={homeButton}>
-            Home
-          </Link>
-        </li>
-        <div>
-          {/* Show the menu icon for tablet and below */}
-          <AiOutlineMenu css={menuIcon} onClick={() => handleShowOption()} />
+      <div>
+        <nav css={navBar}>
+          <li>
+            <Link to="/" css={homeButton}>
+              Home
+            </Link>
+          </li>
+          <div>
+            {/* Show the menu icon for tablet and below */}
+            <AiOutlineMenu css={menuIcon} onClick={() => handleShowOption()} />
 
-          {/* Show links for desktop */}
-          <div css={container}>
-            <Link to="/anime/1" css={desktopLinkStyles}>
-              Anime Detail
-            </Link>
-            <Link to="/collection" css={desktopLinkStyles}>
-              Collection
-            </Link>
-            <Link to="/collection/1" css={desktopLinkStyles}>
-              Collection Detail
-            </Link>
+            {/* Show links for desktop */}
+            <div css={container}>
+              <Link to="/anime/1" css={desktopLinkStyles}>
+                Anime Detail
+              </Link>
+              <Link to="/collection" css={desktopLinkStyles}>
+                Collection
+              </Link>
+              <Link to="/collection/1" css={desktopLinkStyles}>
+                Collection Detail
+              </Link>
+            </div>
           </div>
-        </div>
-      </nav>
-      <main css={mainContainer}>
-        <div css={layerDisable(optionState)} />
+        </nav>
         <div css={menuMobile(optionState)}>
           <Link to="/anime/1" css={desktopLinkStyles}>
             Anime Detail
@@ -46,14 +45,20 @@ export default function Layout(): JSX.Element {
             Collection Detail
           </Link>
         </div>
-        <Outlet />
+      </div>
+      <main css={mainContainer(optionState)}>
+        <div css={layerDisable(optionState)} />
+
+        <div>
+          <Outlet />
+        </div>
       </main>
     </div>
   );
 }
 
 const layerDisable = (optionState: Boolean) => css`
-  display: ${optionState == true ? "flex" : "none"};
+  display: ${optionState === true ? "flex" : "none"};
   position: absolute;
   width: 100vw;
   height: 100%;
@@ -72,9 +77,10 @@ const mainComponent = css`
   height: 100vh;
 `;
 
-const mainContainer = css`
+const mainContainer = (optionState: Boolean) => css`
   position: relative;
   height: 100%;
+  overflow: ${optionState === true ? "clip" : "auto"};
 `;
 
 const navBar = css`
@@ -82,15 +88,16 @@ const navBar = css`
   top: 0;
   z-index: 1000;
   display: flex;
-  height: 56px;
+
   flex-direction: row;
   justify-content: space-between;
   list-style: none;
   padding: 24px;
+  background-color: white;
 `;
 
 const menuMobile = (optionState: Boolean) => css`
-  display: ${optionState == true ? "flex" : "none"};
+  display: ${optionState === true ? "flex" : "none"};
   z-index: 99;
   width: 100%;
   background-color: white;
@@ -98,7 +105,7 @@ const menuMobile = (optionState: Boolean) => css`
   flex-direction: column;
   justify-content: space-between;
   list-style: none;
-  top: 0;
+  top: 56px;
   position: absolute;
   @media (min-width: 768px) {
     display: none;
