@@ -5,9 +5,13 @@ export interface media {
   status: string;
   format: string;
   duration: number;
-  episode: number;
+  episodes: number;
   popularity: number;
-  coverImage: Image;
+  assets: {
+    coverImage: Image;
+    bannerImage: string;
+  };
+  description: string;
 }
 
 interface Image {

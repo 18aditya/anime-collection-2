@@ -16,7 +16,7 @@ export const getTrendingAnime: DocumentNode = gql`
           english
         }
         format
-        type
+        bannerImage
         popularity
         status
         episodes
@@ -27,7 +27,32 @@ export const getTrendingAnime: DocumentNode = gql`
           medium
           color
         }
+        description(asHtml: true)
       }
+    }
+  }
+`;
+
+export const getAnimeDetailByID: DocumentNode = gql`
+  query GetAnimeDetail($id: Int!) {
+    Media(id: $id) {
+      id
+      title {
+        english
+      }
+      format
+      type
+      popularity
+      status
+      episodes
+      duration
+      coverImage {
+        extraLarge
+        large
+        medium
+        color
+      }
+      bannerImage
     }
   }
 `;

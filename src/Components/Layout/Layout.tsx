@@ -1,5 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import useLayoutHooks from "../../utils/hooks/useLayoutHooks";
+import { medium } from "../../utils/styles/global";
+import { navBarConstant } from "../../constant/navbar";
 import { Outlet, Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { css } from "@emotion/react";
@@ -17,56 +19,51 @@ export default function Layout(): JSX.Element {
             </Link>
           </li>
           <div>
-            {/* Show the menu icon for tablet and below */}
             <AiOutlineMenu css={menuIcon} onClick={() => handleShowOption()} />
-
-            {/* Show links for desktop */}
-            <div css={container}>
-              <Link to="/anime/1" css={desktopLinkStyles}>
-                Anime Detail
-              </Link>
-              <Link to="/collection" css={desktopLinkStyles}>
-                Collection
-              </Link>
-              <Link to="/collection/1" css={desktopLinkStyles}>
-                Collection Detail
-              </Link>
-            </div>
+            {/* Show the menu icon for tablet and below */}
+            <div css={container}>{navBarLink()}</div>
           </div>
         </nav>
-        <div css={menuMobile(optionState)}>
-          <Link to="/anime/1" css={desktopLinkStyles}>
-            Anime Detail
-          </Link>
-          <Link to="/collection" css={desktopLinkStyles}>
-            Collection
-          </Link>
-          <Link to="/collection/1" css={desktopLinkStyles}>
-            Collection Detail
-          </Link>
-        </div>
+        {/* Show links for desktop */}
+        <div css={menuMobile(optionState)}>{navBarLink()}</div>
       </div>
-      <main css={mainContainer(optionState)}>
-        <div css={layerDisable(optionState)} />
 
-        <div>
-          <Outlet />
+      <main css={mainContainer(optionState)}>
+        <div css={layerDisable(optionState)}>
+          <div
+            css={css`
+              width: 100%;
+            `}
+          >
+            <Outlet />
+          </div>
         </div>
       </main>
     </div>
   );
 }
 
+function navBarLink() {
+  return (
+    <>
+      {navBarConstant.map((dt, index) => (
+        <Link key={index} to={dt.url} css={desktopLinkStyles}>
+          {dt.title}
+        </Link>
+      ))}
+    </>
+  );
+}
+
 const layerDisable = (optionState: Boolean) => css`
-  display: ${optionState === true ? "flex" : "none"};
+  display: flex;
   position: absolute;
-  width: 100vw;
-  height: 100%;
-  background-color: grey;
-  opacity: 0.5;
-  pointer-events: none;
-  @media (min-width: 768px) {
-    display: none;
+  width: 100%;
+  z-index: 80;
+  background-color: ${optionState === true ? "grey" : "white"};
+  opacity: ${optionState === true ? "0.5" : "1"};
+  pointer-events: ${optionState === true ? "none" : "auto"};
+  ${medium} {
     pointer-events: auto;
   }
 `;
@@ -80,7 +77,7 @@ const mainComponent = css`
 const mainContainer = (optionState: Boolean) => css`
   position: relative;
   height: 100%;
-  overflow: ${optionState === true ? "clip" : "auto"};
+  overflow: ${optionState === true ? "hidden" : "auto"};
 `;
 
 const navBar = css`
@@ -96,6 +93,27 @@ const navBar = css`
   background-color: white;
 `;
 
+const menuIcon = css`
+  display: block;
+  cursor: pointer;
+  ${medium} {
+    display: none;
+  }
+`;
+
+const container = css`
+  display: none;
+  ${medium} {
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    animation: none;
+  }
+`;
+
 const menuMobile = (optionState: Boolean) => css`
   display: ${optionState === true ? "flex" : "none"};
   z-index: 99;
@@ -107,29 +125,8 @@ const menuMobile = (optionState: Boolean) => css`
   list-style: none;
   top: 56px;
   position: absolute;
-  @media (min-width: 768px) {
+  ${medium} {
     display: none;
-  }
-`;
-
-const menuIcon = css`
-  display: block;
-  cursor: pointer;
-  @media (min-width: 768px) {
-    display: none;
-  }
-`;
-
-const container = css`
-  display: none;
-  @media (min-width: 768px) {
-    max-width: 800px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    list-style: none;
-    animation: none;
   }
 `;
 
