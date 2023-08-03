@@ -33,7 +33,7 @@ export default function AnimeList() {
                 <div> {dt.status}</div>
                 <div> {dt.format}</div>
                 <div> {dt.duration} Minute</div>
-                <div> {dt.episodes} Episode</div>
+                <div> {dt.episodes && `${dt.episodes} Episode`} </div>
               </div>
               <div css={animeDescription}>
                 <div>Description</div>

@@ -27,16 +27,16 @@ const useAnimeData = () => {
     const mediaData = data.Page.media.map((media: any) => ({
       id: media.id,
       title: media.title.english,
-      status: media.status === "RELEASING" ? "On-going" : media.status,
       format: media.format,
-      duration: media.duration,
-      episodes: media.episodes || "Unknown",
-      popularity: media.popularity,
-      description: media.description,
       assets: {
-        coverImage: media.coverImage,
         bannerImage: media.bannerImage,
+        coverImage: media.coverImage,
       },
+      popularity: media.popularity,
+      status: media.status === "RELEASING" ? "On-going" : media.status,
+      episodes: media.episodes,
+      duration: media.duration,
+      description: media.description,
     }));
 
     return {

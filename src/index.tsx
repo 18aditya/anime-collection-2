@@ -1,4 +1,5 @@
 import React from "react";
+import { createRoot } from 'react-dom/client';
 import ReactDOM from "react-dom";
 import { RouterProvider } from "react-router-dom";
 import router from "./Routes/routes";

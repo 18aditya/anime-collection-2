@@ -3,7 +3,7 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
-// Keyframes for the rotating animation
+
 const rotateAnimation = keyframes`
   from {
     transform: rotate(0deg);

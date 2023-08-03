@@ -8,8 +8,6 @@ import { useAnimeListCtx } from "../../utils/context/AnimeList";
 export default function Pagination() {
   const {
     data,
-    error,
-    loading,
     pageDropdown,
     setPageDropdown,
     handleChangeDataperPage,

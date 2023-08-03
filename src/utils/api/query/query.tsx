@@ -32,7 +32,6 @@ export const getTrendingAnime: DocumentNode = gql`
     }
   }
 `;
-
 export const getAnimeDetailByID: DocumentNode = gql`
   query GetAnimeDetail($id: Int!) {
     Media(id: $id) {
@@ -55,7 +54,12 @@ export const getAnimeDetailByID: DocumentNode = gql`
       }
       bannerImage
       averageScore
-      
+      nextAiringEpisode {
+        id
+        timeUntilAiring
+        episode
+      }
+      description
     }
   }
 `;

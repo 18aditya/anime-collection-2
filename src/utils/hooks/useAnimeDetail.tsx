@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { getAnimeDetailByID } from "../api/query/query";
-import { Media } from "../interface/interface";
+import { MediaDetail } from "../interface/interface";
 
 const useAnimeDetail = (id: number) => {
   const {
@@ -11,31 +11,32 @@ const useAnimeDetail = (id: number) => {
   } = useQuery(getAnimeDetailByID, {
     variables: { id: id },
   });
-
+  const [modalState, setModalState] = useState<Boolean>(false);
   const handleData = async (data: any) => {
     const media = data.Media;
-    const mediaData: Media = {
+    const mediaData: MediaDetail = {
       id: media.id,
       title: media.title.english,
-      genres:media.genres,
+      genres: media.genres,
       type: media.type,
       popularity: media.popularity,
       status: media.status === "RELEASING" ? "On-going" : media.status,
-      episodes: media.episodes || "Unknown",
+      episodes: media.episodes || "?",
       duration: media.duration,
       format: media.format,
       description: media.description,
-      averageScore:media.averageScore,
+      averageScore: media.averageScore,
       assets: {
         coverImage: media.coverImage,
         bannerImage: media.bannerImage,
       },
+      nextAiringEpisode: media.nextAiringEpisode,
     };
 
     return mediaData;
   };
 
-  const [processedData, setProcessedData] = useState<Media | null>(null);
+  const [processedData, setProcessedData] = useState<MediaDetail | null>(null);
 
   useEffect(() => {
     if (queryData) {
@@ -48,7 +49,7 @@ const useAnimeDetail = (id: number) => {
         });
     }
   }, [queryData]);
-  return { loading, error, data: processedData };
+  return { loading, error, data: processedData,modalState, setModalState };
 };
 
 export default useAnimeDetail;
