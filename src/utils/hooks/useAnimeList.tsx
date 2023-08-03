@@ -23,7 +23,6 @@ const useAnimeData = () => {
 
   const handleData = async (data: any) => {
     const pageData = data.Page.pageInfo;
-
     const mediaData = data.Page.media.map((media: any) => ({
       id: media.id,
       title: media.title.english,

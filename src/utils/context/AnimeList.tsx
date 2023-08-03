@@ -28,9 +28,7 @@ export const AnimeListCtx = createContext<AnimeListHooks | undefined>(
 export const useAnimeListCtx = () => {
   const context = useContext(AnimeListCtx);
   if (context === undefined) {
-    throw new Error(
-      "useAnimeListCtx must be used within a AnimeListCtxProvider"
-    );
+    throw new Error("useAnimeListCtx must be used within a AnimeListProvider");
   }
   return context;
 };

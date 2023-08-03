@@ -18,7 +18,7 @@ export const useAnimeDetailCtx = () => {
   const context = useContext(AnimeDetailCtx);
   if (context === undefined) {
     throw new Error(
-      "useAnimeDetailCtx must be used within a AnimeDetailCtxProvider"
+      "useAnimeDetailCtx must be used within a AnimeDetailProvider"
     );
   }
   return context;

@@ -1,15 +1,16 @@
 /** @jsxImportSource @emotion/react */
-import useLayoutHooks from "../../utils/hooks/useLayoutHooks";
+// import useLayoutHooks from "../../utils/hooks/useLayoutHooks";
 import { medium } from "../../utils/styles/global";
 import { navBarConstant } from "../../constant/navbar";
 import { Outlet, Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { css } from "@emotion/react";
 import * as globalStyles from "../../utils/styles/global";
+import { useGlobalStorageCtx } from "../../utils/context/GlobalStorage";
 
 export default function Layout(): JSX.Element {
-  const { optionState, handleShowOption } = useLayoutHooks();
-
+  // const { optionState, handleShowOption } = useLayoutHooks();
+  const { modalState, handleShowOption, optionState } = useGlobalStorageCtx();
   return (
     <div css={mainComponent}>
       <div>
@@ -20,29 +21,34 @@ export default function Layout(): JSX.Element {
           <div>
             <AiOutlineMenu css={menuIcon} onClick={() => handleShowOption()} />
             {/* Show the menu icon for tablet and below */}
-            <div css={container}>{navBarLink()}</div>
+            <div css={container}>{NavBarLink()}</div>
           </div>
         </nav>
         {/* Show links for desktop */}
-        <div css={menuMobile(optionState)}>{navBarLink()}</div>
+        <div css={menuMobile(optionState)}>{NavBarLink()}</div>
       </div>
 
-      <main css={mainContainer(optionState)}>
-        <div css={layerDisable(optionState)}>
-          <div css={[globalStyles.flexCol, globalStyles.widthFull]}>
-            <Outlet />
-          </div>
+      <main css={mainContainer(optionState, modalState)}>
+        <div css={layerDisable(optionState, modalState)}> </div>
+        <div css={[globalStyles.flexCol, globalStyles.widthFull]}>
+          <Outlet />
         </div>
       </main>
     </div>
   );
 }
 
-function navBarLink() {
+function NavBarLink() {
+  const { setOption } = useGlobalStorageCtx();
   return (
     <>
       {navBarConstant.map((dt, index) => (
-        <Link key={index} to={dt.url} css={desktopLinkStyles}>
+        <Link
+          key={index}
+          to={dt.url}
+          css={desktopLinkStyles}
+          onClick={() => setOption(false)}
+        >
           {dt.title}
         </Link>
       ))}
@@ -50,13 +56,14 @@ function navBarLink() {
   );
 }
 
-const layerDisable = (optionState: Boolean) => css`
+const layerDisable = (optionState: Boolean, modalState: Boolean) => css`
   display: flex;
   position: absolute;
   width: 100%;
   z-index: 80;
-  background-color: ${optionState === true ? "grey" : "white"};
-  opacity: ${optionState === true ? "0.5" : "1"};
+  height: ${optionState  === true ? "10000px" : "0px"};
+  background-color: grey;
+  opacity: ${optionState === true ? "0.5" : "0"};
   pointer-events: ${optionState === true ? "none" : "auto"};
   ${medium} {
     pointer-events: auto;
@@ -69,10 +76,10 @@ const mainComponent = css`
   height: 100vh;
 `;
 
-const mainContainer = (optionState: Boolean) => css`
+const mainContainer = (optionState: Boolean, modalState: Boolean) => css`
   position: relative;
   height: 100%;
-  overflow: ${optionState === true ? "hidden" : "auto"};
+  overflow: ${optionState || modalState === true ? "hidden" : "auto"};
 `;
 
 const navBar = css`
@@ -136,6 +143,9 @@ const desktopLinkStyles = css`
 `;
 
 const homeButton = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   color: #000;
 

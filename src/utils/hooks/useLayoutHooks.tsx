@@ -1,14 +1,12 @@
 import { useState } from "react";
 
 export default function useLayoutHooks() {
-  const [optionState, setOption] = useState<boolean>(false);
+  // const [optionState, setOption] = useState<boolean>(false);
 
-  const handleShowOption = () => {
-    setOption(!optionState);
-  };
+  // const handleShowOption = () => {
+  //   setOption(!optionState);
+  // };
 
-  return {
-    optionState,
-    handleShowOption,
-  };
+  return {};
 }
+//deprecated moved to GlobalStorage

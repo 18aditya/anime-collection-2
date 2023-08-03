@@ -4,19 +4,21 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useAnimeDetailCtx } from "../../utils/context/AnimeDetail";
 interface Modal {
   children: React.ReactNode;
+  modalState: Boolean;
+  setModalState: React.Dispatch<React.SetStateAction<Boolean>>;
 }
-const Modal = ({ children }: Modal) => {
-  const { modalState, setModalState } = useAnimeDetailCtx();
+const Modal = ({ children,modalState,setModalState }: Modal) => {
+  
   return (
-    <div>
+    <>
       <div
         css={css`
           display: ${modalState ? "flex" : "none"};
           position: absolute;
           opacity: 0.5;
-          background-color: #efefef;
+          background-color: grey;
           min-width: 100vw;
-          min-height: 100%;
+          height: 1000000px;
         `}
         onClick={() => setModalState(false)}
       ></div>
@@ -48,7 +50,7 @@ const Modal = ({ children }: Modal) => {
         </div>
         {children}
       </div>
-    </div>
+    </>
   );
 };
 
@@ -62,6 +64,5 @@ const slideInAnimation = keyframes`
     opacity: 1;
   }
 `;
-
 
 export default Modal;
