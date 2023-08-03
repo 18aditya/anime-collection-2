@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from "@emotion/react";
 import { AiOutlineClose } from "react-icons/ai";
-import { useAnimeDetailCtx } from "../../utils/context/AnimeDetail";
-interface Modal {
+
+interface ModalModel {
   children: React.ReactNode;
   modalState: Boolean;
   setModalState: React.Dispatch<React.SetStateAction<Boolean>>;
 }
-const Modal = ({ children,modalState,setModalState }: Modal) => {
+const Modal = ({ children,modalState,setModalState }: ModalModel) => {
   
   return (
     <>

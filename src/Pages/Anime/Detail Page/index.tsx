@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState } from "react";
 
 import * as globalStyles from "../../../utils/styles/global";
 import {
@@ -7,11 +6,7 @@ import {
   useAnimeDetailCtx,
 } from "../../../utils/context/AnimeDetail";
 import useAnimeDetail from "../../../utils/hooks/useAnimeDetail";
-import {
-  CircularLoading,
-  CountdownTimer,
-  Modal,
-} from "../../../Components/components";
+import { CircularLoading, Modal } from "../../../Components/components";
 
 import { css } from "@emotion/react";
 import { AiOutlineStar, AiOutlineHeart } from "react-icons/ai";
@@ -194,7 +189,7 @@ function Content() {
                   border: 1px solid lightgrey;
                   border-radius: 4px;
                   cursor: pointer;
-               
+
                   &:hover {
                     background-color: #f0f0f0;
                   }
