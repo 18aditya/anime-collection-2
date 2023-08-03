@@ -8,7 +8,6 @@ import {
   useAnimeListCtx,
 } from "../../../utils/context/AnimeList";
 
-
 export default function Page() {
   const useAnimeListContext = useAnimeData();
 
@@ -20,7 +19,7 @@ export default function Page() {
 }
 
 function Content() {
-  const { loading} = useAnimeListCtx();
+  const { loading } = useAnimeListCtx();
 
   return (
     <div css={[globalStyles.flexCol, globalStyles.widthFull]}>
@@ -70,14 +69,8 @@ function Content() {
         ]}
       >
         On-going Anime
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <>
-            <AnimeList />
-            <Pagination />
-          </>
-        )}
+        <AnimeList />
+        <Pagination />
       </div>
     </div>
   );

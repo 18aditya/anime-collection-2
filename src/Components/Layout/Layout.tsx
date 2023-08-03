@@ -14,11 +14,9 @@ export default function Layout(): JSX.Element {
     <div css={mainComponent}>
       <div>
         <nav css={navBar}>
-          <li>
-            <Link to="/" css={homeButton}>
-              Home
-            </Link>
-          </li>
+          <Link to="/" css={homeButton}>
+            Home
+          </Link>
           <div>
             <AiOutlineMenu css={menuIcon} onClick={() => handleShowOption()} />
             {/* Show the menu icon for tablet and below */}

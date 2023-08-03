@@ -7,6 +7,7 @@ import {
 } from "../../../utils/context/AnimeDetail";
 import useAnimeDetail from "../../../utils/hooks/useAnimeDetail";
 import { useLocation } from "react-router-dom";
+import { AiOutlineStar } from "react-icons/ai";
 export default function Page() {
   const location = useLocation();
   const pathname = location.pathname;
@@ -44,52 +45,122 @@ function Content() {
         >
           {data?.title}
         </div>
-        <div css={[globalStyles.flexRow]}>
+        <div
+          css={[
+            globalStyles.flexRow,
+            css`
+              gap: 8px;
+              max-height: 250px;
+              background-color: rgb(248, 248, 248);
+            `,
+          ]}
+        >
           <img
             src={data?.assets.coverImage.large}
             css={coverImage}
             alt={data?.assets.coverImage.medium}
           />
-          <div css={[globalStyles.flexCol, detailContainer]}>
+          <div
+            css={[
+              globalStyles.flexCol,
+              detailContainer,
+              css`
+                justify-content: space-between;
+                gap: 4px;
+              `,
+            ]}
+          >
             <div
-              css={css`
-                font-size: 30px;
-                font-weight: 700;
-              `}
+              css={[
+                globalStyles.flexRow,
+                css`
+                  align-items: center;
+                  gap: 4px;
+                `,
+              ]}
             >
-              {(data?.averageScore || 0) / 10}
+              <AiOutlineStar size={30} />
+              <div
+                css={css`
+                  font-size: 30px;
+                  font-weight: 700;
+                `}
+              >
+                {(data?.averageScore || 0) / 10}
+              </div>
             </div>
             <div
-              css={css`
-                font-size: 25px;
-                font-weight: 400;
-              `}
+              css={[
+                globalStyles.flexCol,
+                css`
+                  gap: 8px;
+                `,
+              ]}
             >
-              {data?.format}
-            </div>
-            <div
-              css={css`
-                font-size: 25px;
-                font-weight: 400;
-              `}
-            >
-              {`${data?.duration} Minutes`}
-            </div>
-            <div
-              css={css`
-                font-size: 25px;
-                font-weight: 400;
-              `}
-            >
-              {data?.status}
-            </div>
-            <div
-              css={css`
-                font-size: 25px;
-                font-weight: 400;
-              `}
-            >
-              {data?.episodes}
+              <div
+                css={[
+                  globalStyles.flexRow,
+                  css`
+                    align-items: center;
+                    gap: 4px;
+                  `,
+                ]}
+              >
+                <div
+                  css={css`
+                    font-size: 20px;
+                    font-weight: 400;
+                  `}
+                >
+                  {data?.format}
+                </div>
+                <div
+                  css={css`
+                    font-size: 22px;
+                    font-weight: 400;
+                  `}
+                >
+                  ({data?.episodes} eps)
+                </div>
+              </div>
+              <div css={globalStyles.flexCol}>
+                <div
+                  css={css`
+                    font-size: 18px;
+                    font-weight: 100;
+                    color: #7a7a7a;
+                  `}
+                >
+                  Duration
+                </div>
+                <div
+                  css={css`
+                    font-size: 22px;
+                    font-weight: 400;
+                  `}
+                >
+                  {`${data?.duration} Minutes`}
+                </div>
+              </div>
+              <div css={globalStyles.flexCol}>
+                <div
+                  css={css`
+                    font-size: 18px;
+                    font-weight: 100;
+                    color: #7a7a7a;
+                  `}
+                >
+                  Status
+                </div>
+                <div
+                  css={css`
+                    font-size: 22px;
+                    font-weight: 400;
+                  `}
+                >
+                  {data?.status}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -110,6 +181,8 @@ const coverImage = [
   image,
   css`
     display: flex;
+
+    object-fit: cover;
     ${globalStyles.medium} {
       display: none;
     }

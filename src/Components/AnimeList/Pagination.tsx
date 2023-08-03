@@ -4,7 +4,6 @@ import { css } from "@emotion/react";
 import { GrPlay, GrFastForward } from "react-icons/gr";
 import * as globalStyles from "../../utils/styles/global";
 import { useAnimeListCtx } from "../../utils/context/AnimeList";
-import GlobalStyles from "../../globalStyles";
 
 export default function Pagination() {
   const {
@@ -20,14 +19,6 @@ export default function Pagination() {
     handleLastPage,
   } = useAnimeListCtx();
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error...</div>;
-  }
-
   return (
     <div css={paginationStyle}>
       <div
@@ -40,15 +31,21 @@ export default function Pagination() {
         ]}
       >
         <GrFastForward
-          css={css`
-            transform: rotate(180deg);
-          `}
+          css={[
+            cursorPointer,
+            css`
+              transform: rotate(180deg);
+            `,
+          ]}
           onClick={handleFirstPage}
         />
         <GrPlay
-          css={css`
-            transform: rotate(180deg);
-          `}
+          css={[
+            cursorPointer,
+            css`
+              transform: rotate(180deg);
+            `,
+          ]}
           onClick={handlePageBack}
         />
       </div>
@@ -102,8 +99,8 @@ export default function Pagination() {
           `,
         ]}
       >
-        <GrPlay onClick={handlePageNext} />
-        <GrFastForward onClick={handleLastPage} />
+        <GrPlay css={cursorPointer} onClick={handlePageNext} />
+        <GrFastForward css={cursorPointer} onClick={handleLastPage} />
       </div>
     </div>
   );
@@ -142,7 +139,7 @@ const pageStyle = [
     border: 1px solid black;
     border-radius: 4px;
     padding: 4px;
-    height: 15px;
+    height: 17px;
     width: 50px;
     cursor: pointer;
   `,
@@ -160,3 +157,7 @@ const paginationStyle = [
     margin-bottom: 50px;
   `,
 ];
+
+const cursorPointer = css`
+  cursor: pointer;
+`;
