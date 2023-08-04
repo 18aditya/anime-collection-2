@@ -51,13 +51,13 @@ function Content() {
     handleAddAnimeCollection,
     formError,
     collectionModal,
-    setCollectionModal,
+ 
     handleCollectionModalState,
     handleAdditionalModalState,
     addModal,
-    setAddModal,
+
   } = useAnimeDetailCtx();
-  const { modalState, setModalState, GlobalStorageData } =
+  const { GlobalStorageData } =
     useGlobalStorageCtx();
   if (loading) {
     return <LoadingComponent />;

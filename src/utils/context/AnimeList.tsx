@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-import { Media, PageProperties } from "../interface/Interface";
+import type { Media, PageProperties } from "../interface/Interface";
 
 interface DataModel {
   Data: Media[];

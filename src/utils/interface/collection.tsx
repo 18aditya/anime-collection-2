@@ -1,4 +1,4 @@
-import { Image } from "./Interface";
+import type { Image } from "./Interface";
 
 export interface animeCollectionProps {
   id: number | undefined;

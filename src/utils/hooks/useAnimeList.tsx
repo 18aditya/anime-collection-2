@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { getTrendingAnime } from "../api/query/query";
-import { Media, PageProperties } from "../interface/Interface";
+import type { Media, PageProperties } from "../interface/Interface";
 
 interface DataModel {
   Data: Media[];
