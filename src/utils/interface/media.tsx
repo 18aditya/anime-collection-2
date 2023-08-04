@@ -4,7 +4,7 @@ export interface media {
   format: string;
   assets: {
     bannerImage: string;
-    coverImage: Image;
+    coverImage: image;
   };
   popularity: number;
   status: string;
@@ -12,7 +12,7 @@ export interface media {
   duration: number;
   description: string;
 }
-interface Image {
+export interface image {
   extraLarge: string;
   large: string;
   medium: string;
@@ -31,12 +31,7 @@ export interface mediaDetail {
   description: string;
   averageScore: number;
   assets: {
-    coverImage: {
-      extraLarge: string;
-      large: string;
-      medium: string;
-      color: string;
-    };
+    coverImage: image;
     bannerImage: string;
   };
   nextAiringEpisode: {

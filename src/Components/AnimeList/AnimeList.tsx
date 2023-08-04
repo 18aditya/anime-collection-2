@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 
 import * as globalStyles from "../../utils/styles/global";
-import { Media } from "../../utils/interface/interface";
+import { Media } from "../../utils/interface/Interface";
 import { css } from "@emotion/react";
-import { useAnimeListCtx } from "../../utils/context/AnimeList";
+import { useAnimeListCtx } from "../../utils/context/Context";
 import { Link } from "react-router-dom";
 import { CircularLoading } from "../components";
 

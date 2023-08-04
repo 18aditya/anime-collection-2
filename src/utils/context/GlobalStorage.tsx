@@ -1,19 +1,26 @@
 import { createContext, useContext } from "react";
 import useGlobalStorage from "../hooks/useGlobalStorage";
+import { AnimeCollectionProps } from "../interface/Interface";
 
-export interface GlobalStorageData {
-  [key: string]: any;
+export interface GlobalStorageDataProps {
+  id: number;
+  collection_title: string;
+  animes: Array<AnimeCollectionProps>;
+  created_at: Date;
 }
 
 export interface GlobalStorageContextType {
-  GlobalStorageData: GlobalStorageData;
-  updateGlobalStorage: (newData: GlobalStorageData) => void;
+  GlobalStorageData: Array<GlobalStorageDataProps>;
+  updateGlobalStorage: (newData: GlobalStorageDataProps) => void;
   modalState: Boolean;
   handleShowModal: () => void;
   setModalState: React.Dispatch<React.SetStateAction<Boolean>>;
   optionState: Boolean;
   handleShowOption: () => void;
   setOption: React.Dispatch<React.SetStateAction<Boolean>>;
+  setGlobalStorageData: React.Dispatch<
+    React.SetStateAction<GlobalStorageDataProps[]>
+  >;
 }
 
 interface GlobalStorageProviderProps {
@@ -23,7 +30,7 @@ const GlobalStorageCtx = createContext<GlobalStorageContextType | undefined>(
   undefined
 );
 
-export const useGlobalStorageCtx = (): GlobalStorageContextType => {
+export const useGlobalStorageContext = (): GlobalStorageContextType => {
   const context = useContext(GlobalStorageCtx);
   if (context === undefined) {
     throw new Error(
@@ -33,7 +40,7 @@ export const useGlobalStorageCtx = (): GlobalStorageContextType => {
   return context;
 };
 
-export const GlobalStorageProvider: React.FC<GlobalStorageProviderProps> = ({
+export const GlobalStoragePrvdr: React.FC<GlobalStorageProviderProps> = ({
   children,
 }) => {
   const useGlobalStorageCtx = useGlobalStorage();

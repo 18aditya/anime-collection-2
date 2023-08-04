@@ -1,15 +1,13 @@
 /** @jsxImportSource @emotion/react */
-// import useLayoutHooks from "../../utils/hooks/useLayoutHooks";
-import { medium } from "../../utils/styles/global";
+
 import { navBarConstant } from "../../constant/navbar";
 import { Outlet, Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { css } from "@emotion/react";
 import * as globalStyles from "../../utils/styles/global";
-import { useGlobalStorageCtx } from "../../utils/context/GlobalStorage";
+import { useGlobalStorageCtx } from "../../utils/context/Context";
 
 export default function Layout(): JSX.Element {
-  // const { optionState, handleShowOption } = useLayoutHooks();
   const { modalState, handleShowOption, optionState } = useGlobalStorageCtx();
   return (
     <div css={mainComponent}>
@@ -61,11 +59,11 @@ const layerDisable = (optionState: Boolean, modalState: Boolean) => css`
   position: absolute;
   width: 100%;
   z-index: 80;
-  height: ${optionState  === true ? "10000px" : "0px"};
+  height: ${optionState === true ? "10000px" : "0px"};
   background-color: grey;
   opacity: ${optionState === true ? "0.5" : "0"};
   pointer-events: ${optionState === true ? "none" : "auto"};
-  ${medium} {
+  ${globalStyles.medium} {
     pointer-events: auto;
   }
 `;
@@ -98,14 +96,14 @@ const navBar = css`
 const menuIcon = css`
   display: block;
   cursor: pointer;
-  ${medium} {
+  ${globalStyles.medium} {
     display: none;
   }
 `;
 
 const container = css`
   display: none;
-  ${medium} {
+  ${globalStyles.medium} {
     max-width: 800px;
     width: 100%;
     display: flex;
@@ -127,7 +125,7 @@ const menuMobile = (optionState: Boolean) => css`
   list-style: none;
   top: 56px;
   position: absolute;
-  ${medium} {
+  ${globalStyles.medium} {
     display: none;
   }
 `;

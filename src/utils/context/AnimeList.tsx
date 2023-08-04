@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-import { Media, PageProperties } from "../interface/interface";
+import { Media, PageProperties } from "../interface/Interface";
 
 interface DataModel {
   Data: Media[];
@@ -21,12 +21,12 @@ interface AnimeListHooks {
   handleLastPage: () => void;
 }
 
-export const AnimeListCtx = createContext<AnimeListHooks | undefined>(
+export const AnimeListContext = createContext<AnimeListHooks | undefined>(
   undefined
 );
 
-export const useAnimeListCtx = () => {
-  const context = useContext(AnimeListCtx);
+export const useAnimeListContext = () => {
+  const context = useContext(AnimeListContext);
   if (context === undefined) {
     throw new Error("useAnimeListCtx must be used within a AnimeListProvider");
   }

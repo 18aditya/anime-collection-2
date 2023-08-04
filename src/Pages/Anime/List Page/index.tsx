@@ -5,7 +5,7 @@ import * as globalStyles from "../../../utils/styles/global";
 import { Pagination, AnimeList } from "../../../Components/components";
 
 import useAnimeData from "../../../utils/hooks/useAnimeList";
-import { AnimeListCtx } from "../../../utils/context/AnimeList";
+import { AnimeListCtx } from "../../../utils/context/Context";
 
 export default function Page() {
   const useAnimeListContext = useAnimeData();
@@ -19,7 +19,13 @@ export default function Page() {
 
 function Content() {
   return (
-    <div css={[globalStyles.flexCol, globalStyles.widthFull]}>
+    <div
+      css={[
+        globalStyles.flexCol,
+        globalStyles.widthFull,
+        globalStyles.flexCenter,
+      ]}
+    >
       <div
         css={[
           globalStyles.flexCenter,
@@ -60,6 +66,7 @@ function Content() {
           globalStyles.flexCol,
           globalStyles.flexCenter,
           css`
+            width: 80%;
             padding: 12px;
             gap: 24px;
           `,

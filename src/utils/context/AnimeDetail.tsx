@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { MediaDetail } from "../interface/interface";
+import { AddAnimeFunction, MediaDetail } from "../interface/Interface";
 import { ApolloError } from "@apollo/client";
 
 interface AnimeDetailHooks {
@@ -8,14 +8,27 @@ interface AnimeDetailHooks {
   data: MediaDetail | null;
   modalState: Boolean;
   setModalState: React.Dispatch<React.SetStateAction<Boolean>>;
+  formState: Boolean;
+  setFormState: React.Dispatch<React.SetStateAction<Boolean>>;
+  collectionName: string;
+  setCollectionName: React.Dispatch<React.SetStateAction<string>>;
+  handleCreateNewCollection: () => void;
+  handleAddAnimeCollection: (newData: AddAnimeFunction) => void;
+  formError: string;
+  collectionModal: Boolean;
+  setCollectionModal: React.Dispatch<React.SetStateAction<Boolean>>;
+  handleCollectionModalState: () => void;
+  handleAdditionalModalState: () => void;
+  addModal: Boolean;
+  setAddModal: React.Dispatch<React.SetStateAction<Boolean>>;
 }
 
-export const AnimeDetailCtx = createContext<AnimeDetailHooks | undefined>(
+export const AnimeDetailContext = createContext<AnimeDetailHooks | undefined>(
   undefined
 );
 
-export const useAnimeDetailCtx = () => {
-  const context = useContext(AnimeDetailCtx);
+export const useAnimeDetailContext = () => {
+  const context = useContext(AnimeDetailContext);
   if (context === undefined) {
     throw new Error(
       "useAnimeDetailCtx must be used within a AnimeDetailProvider"

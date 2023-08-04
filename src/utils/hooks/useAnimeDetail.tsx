@@ -1,9 +1,18 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { getAnimeDetailByID } from "../api/query/query";
-import { MediaDetail } from "../interface/interface";
+import { MediaDetail, AddAnimeFunction } from "../interface/Interface";
+import { useGlobalStorageCtx } from "../context/Context";
 
 const useAnimeDetail = (id: number) => {
+  const {
+    updateGlobalStorage,
+    GlobalStorageData,
+    modalState,
+    setModalState,
+    setGlobalStorageData,
+  } = useGlobalStorageCtx();
+
   const {
     loading,
     error,
@@ -11,7 +20,81 @@ const useAnimeDetail = (id: number) => {
   } = useQuery(getAnimeDetailByID, {
     variables: { id: id },
   });
-  const [modalState, setModalState] = useState<Boolean>(false);
+
+  const [collectionName, setCollectionName] = useState<string>("");
+  const [formState, setFormState] = useState<Boolean>(false);
+  const [formError, setFormError] = useState<string>("");
+  const [collectionModal, setCollectionModal] = useState<Boolean>(false);
+  const [addModal, setAddModal] = useState<Boolean>(false);
+
+  const handleAdditionalModalState = () => {
+    setAddModal(!addModal);
+    setModalState(!modalState);
+  };
+
+  const handleCollectionModalState = () => {
+    setCollectionModal(!collectionModal);
+    setModalState(!modalState);
+  };
+  const handleAddAnimeCollection = ({
+    id,
+    title,
+    coverImage,
+    bannerImage,
+    collId,
+  }: AddAnimeFunction) => {
+    const req = {
+      id: id,
+      title: title,
+      coverImage: coverImage,
+      bannerImage: bannerImage,
+      added_at: new Date(),
+    };
+
+    const temp = GlobalStorageData.find((dt) => dt.id === collId);
+
+    if (temp) {
+      if (temp.animes.find((dt) => dt.id === id)) {
+        return;
+      }
+
+      temp.animes.push(req);
+
+      const updatedGlobalStorageData = GlobalStorageData.map((coll) =>
+        coll.id === collId ? temp : coll
+      );
+
+      localStorage.setItem(
+        "collections",
+        JSON.stringify(updatedGlobalStorageData)
+      );
+      setGlobalStorageData(updatedGlobalStorageData);
+    }
+  };
+
+  const handleCreateNewCollection = () => {
+    const body = {
+      id: GlobalStorageData.length + 1,
+      collection_title: collectionName,
+      animes: [],
+      created_at: new Date(),
+    };
+    const specialCharPattern = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    if (specialCharPattern.test(collectionName)) {
+      setFormError("Collection Name cannot contain special character");
+      return;
+    }
+    const temp = GlobalStorageData.some(
+      (dt) => dt.collection_title === collectionName
+    );
+    if (temp) {
+      setFormError("Collection Name must be unique");
+      return;
+    }
+    updateGlobalStorage(body);
+    setFormState(false);
+  };
+
   const handleData = async (data: any) => {
     const media = data.Media;
     const mediaData: MediaDetail = {
@@ -49,7 +132,26 @@ const useAnimeDetail = (id: number) => {
         });
     }
   }, [queryData]);
-  return { loading, error, data: processedData,modalState, setModalState };
+  return {
+    loading,
+    error,
+    data: processedData,
+    modalState,
+    setModalState,
+    formState,
+    setFormState,
+    collectionName,
+    setCollectionName,
+    handleCreateNewCollection,
+    handleAddAnimeCollection,
+    formError,
+    collectionModal,
+    setCollectionModal,
+    handleCollectionModalState,
+    handleAdditionalModalState,
+    addModal,
+    setAddModal,
+  };
 };
 
 export default useAnimeDetail;

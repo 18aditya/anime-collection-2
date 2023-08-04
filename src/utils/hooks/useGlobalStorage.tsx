@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { GlobalStorageData } from "../context/GlobalStorage";
+import { GlobalStorageDataProps } from "../context/GlobalStorage";
 
 const useGlobalStorage = () => {
   //layout component
@@ -17,20 +17,24 @@ const useGlobalStorage = () => {
   };
 
   //storage component
-  const [GlobalStorageData, setGlobalStorageData] = useState<GlobalStorageData>(
-    {}
-  );
+  const [GlobalStorageData, setGlobalStorageData] = useState<
+    Array<GlobalStorageDataProps>
+  >([]);
 
   useEffect(() => {
-    const data = localStorage.getItem("appData");
+    const data = localStorage.getItem("collections");
     if (data) {
       setGlobalStorageData(JSON.parse(data));
     }
   }, []);
 
-  const updateGlobalStorage = (newData: GlobalStorageData) => {
-    localStorage.setItem("appData", JSON.stringify(newData));
-    setGlobalStorageData(newData);
+  const updateGlobalStorage = (newData: GlobalStorageDataProps) => {
+    const collArray = GlobalStorageData;
+    var temp = [...collArray, newData];
+    
+
+    localStorage.setItem("collections", JSON.stringify(temp));
+    setGlobalStorageData(temp);
   };
 
   return {
@@ -42,6 +46,7 @@ const useGlobalStorage = () => {
     optionState,
     handleShowOption,
     setOption,
+    setGlobalStorageData,
   };
 };
 
