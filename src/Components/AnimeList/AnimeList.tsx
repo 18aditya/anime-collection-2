@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import * as globalStyles from "../../utils/styles/global";
-import type { Media } from "../../utils/interface/Interface";
+import type { Media } from "src/utils/interface/Interface";
 import { css } from "@emotion/react";
 import { useAnimeListCtx } from "../../utils/context/Context";
 import { Link } from "react-router-dom";

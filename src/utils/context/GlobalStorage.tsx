@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import useGlobalStorage from "../hooks/useGlobalStorage";
-import type { AnimeCollectionProps } from "../interface/Interface";
+import type { AnimeCollectionProps } from "src/utils/interface/Interface";
 
 export interface GlobalStorageDataProps {
   id: number;

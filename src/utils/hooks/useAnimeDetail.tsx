@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { getAnimeDetailByID } from "../api/query/query";
-import type { MediaDetail, AddAnimeFunction } from "../interface/Interface";
+import type { MediaDetail, AddAnimeFunction } from "src/utils/interface/Interface";
 import { useGlobalStorageCtx } from "../context/Context";
 
 const useAnimeDetail = (id: number) => {
