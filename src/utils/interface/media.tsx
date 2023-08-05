@@ -1,16 +1,16 @@
 export interface media {
-  id: number;
-  title: string;
-  format: string;
+  id: number | undefined;
+  title: string | undefined;
+  format: string | undefined;
   assets: {
-    bannerImage: string;
-    coverImage: image;
+    bannerImage: string | undefined;
+    coverImage: image | undefined;
   };
-  popularity: number;
-  status: string;
-  episodes: number;
-  duration: number;
-  description: string;
+  popularity: number | undefined;
+  status: string | undefined;
+  episodes: number | undefined;
+  duration: number | undefined;
+  description: string | undefined;
 }
 export interface image {
   extraLarge: string;
@@ -25,7 +25,7 @@ export interface mediaDetail {
   type: string;
   popularity: number;
   status: string;
-  episodes: number | string;
+  episodes: number;
   duration: number;
   format: string;
   description: string;

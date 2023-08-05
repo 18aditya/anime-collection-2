@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { getAnimeDetailByID } from "../api/query/query";
-import type { MediaDetail, AddAnimeFunction } from "src/utils/interface/Interface";
+import type {
+  MediaDetail,
+  AddAnimeFunction,
+} from "src/utils/interface/Interface";
 import { useGlobalStorageCtx } from "../context/Context";
+import { useNavigate } from "react-router-dom";
 
 const useAnimeDetail = (id: number) => {
   const {
@@ -20,12 +24,17 @@ const useAnimeDetail = (id: number) => {
   } = useQuery(getAnimeDetailByID, {
     variables: { id: id },
   });
-
+  const navigate = useNavigate();
   const [collectionName, setCollectionName] = useState<string>("");
   const [formState, setFormState] = useState<Boolean>(false);
   const [formError, setFormError] = useState<string>("");
   const [collectionModal, setCollectionModal] = useState<Boolean>(false);
   const [addModal, setAddModal] = useState<Boolean>(false);
+
+  const handleCollectionList = (id: number) => {
+    setModalState(!modalState);
+    navigate(`/collection/${id}`);
+  };
 
   const handleAdditionalModalState = () => {
     setAddModal(!addModal);
@@ -36,18 +45,29 @@ const useAnimeDetail = (id: number) => {
     setCollectionModal(!collectionModal);
     setModalState(!modalState);
   };
+
   const handleAddAnimeCollection = ({
+    collId,
     id,
     title,
-    coverImage,
-    bannerImage,
-    collId,
+    assets,
+    popularity,
+    status,
+    episodes,
+    duration,
+    description,
+    format,
   }: AddAnimeFunction) => {
     const req = {
       id: id,
       title: title,
-      coverImage: coverImage,
-      bannerImage: bannerImage,
+      assets: assets,
+      popularity: popularity,
+      status: status,
+      episodes: episodes,
+      duration: duration,
+      description: description,
+      format,
       added_at: new Date(),
     };
 
@@ -73,8 +93,14 @@ const useAnimeDetail = (id: number) => {
   };
 
   const handleCreateNewCollection = () => {
+    if (collectionName.trim() == "") {
+      setFormError("Collection cannot be empty");
+      return;
+    }
     const body = {
-      id: GlobalStorageData.length + 1,
+      id: GlobalStorageData[GlobalStorageData.length - 1]
+        ? GlobalStorageData[GlobalStorageData.length - 1].id + 1
+        : 1,
       collection_title: collectionName,
       animes: [],
       created_at: new Date(),
@@ -111,7 +137,7 @@ const useAnimeDetail = (id: number) => {
       averageScore: media.averageScore,
       assets: {
         coverImage: media.coverImage,
-        bannerImage: media.bannerImage,
+        bannerImage: media.bannerImage || media.coverImage.extraLarge,
       },
       nextAiringEpisode: media.nextAiringEpisode,
     };
@@ -151,6 +177,7 @@ const useAnimeDetail = (id: number) => {
     handleAdditionalModalState,
     addModal,
     setAddModal,
+    handleCollectionList,
   };
 };
 

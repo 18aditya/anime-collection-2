@@ -25,10 +25,10 @@ const useAnimeData = () => {
     const pageData = data.Page.pageInfo;
     const mediaData = data.Page.media.map((media: any) => ({
       id: media.id,
-      title: media.title.english,
+      title: media.title.english || "-Title Not found-",
       format: media.format,
       assets: {
-        bannerImage: media.bannerImage,
+        bannerImage: media.bannerImage || media.coverImage.extraLarge,
         coverImage: media.coverImage,
       },
       popularity: media.popularity,

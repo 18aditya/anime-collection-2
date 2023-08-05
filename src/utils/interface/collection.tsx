@@ -1,12 +1,19 @@
-import type { Image } from "src/utils/interface/Interface";
+import type {Media } from "src/utils/interface/Interface";
 
-export interface animeCollectionProps {
-  id: number | undefined;
-  title: string | undefined;
-  coverImage: Image | undefined;
-  bannerImage: string | undefined;
-}
+// export interface animeCollectionProps {
+//   id: number | undefined;
+//   title: string | undefined;
+//   assets: {
+//     coverImage: Image | undefined;
+//     bannerImage: string | undefined;
+//   };
+//   popularity: number;
+//   status: string;
+//   episodes: number;
+//   duration: number;
+//   description: string;
+// }
 
-export interface addAnimeFunction extends animeCollectionProps {
+export interface addAnimeFunction extends Media {
   collId: number | undefined;
 }

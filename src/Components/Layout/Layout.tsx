@@ -1,34 +1,147 @@
 /** @jsxImportSource @emotion/react */
 
 import { navBarConstant } from "../../constant/navbar";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { css } from "@emotion/react";
 import * as globalStyles from "../../utils/styles/global";
 import { useGlobalStorageCtx } from "../../utils/context/Context";
-
+import { useLocation } from "react-router-dom";
+import { Modal } from "../components";
 export default function Layout(): JSX.Element {
-  const { modalState, handleShowOption, optionState } = useGlobalStorageCtx();
+  const {
+    modalState,
+    handleShowOption,
+    optionState,
+    handleShowModal,
+    addModal,
+    handleCreateNewCollection,
+    setCollectionName,
+    collectionName,
+    formError,
+    setModalState,
+    setAddModal,
+  } = useGlobalStorageCtx();
+  const location = useLocation();
+  const currentLink = location.pathname;
+  const navigate = useNavigate();
+
+  const handleNavigation = (path: string) => {
+    setAddModal(false);
+    setModalState(false);
+    navigate(path);
+  };
   return (
     <div css={mainComponent}>
       <div>
-        <nav css={navBar}>
-          <Link to="/" css={homeButton}>
+        <nav
+          css={[
+            navBar,
+            globalStyles.flexCenter,
+            css`
+              justify-content: space-between;
+            `,
+          ]}
+        >
+          <div onClick={() => handleNavigation("/")} css={homeButton}>
             Home
-          </Link>
+          </div>
+          {currentLink === "/collection" && (
+            <button
+              css={[
+                globalStyles.flexRow,
+                globalStyles.flexCenter,
+                css`
+                font-family: "Geek", sans-serif;
+                  display: flex;
+                  height: 100%;
+                  gap: 6px;
+                  background-color: white;
+                  padding: 8px;
+                  border: 1px solid lightgrey;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  &:hover {
+                    background-color: #f0f0f0;
+                  }
+                `,
+              ]}
+              onClick={handleShowModal}
+            >
+              
+              Add new collection
+            </button>
+          )}
           <div>
             <AiOutlineMenu css={menuIcon} onClick={() => handleShowOption()} />
             {/* Show the menu icon for tablet and below */}
-            <div css={container}>{NavBarLink()}</div>
+            <div css={container}>{NavBarLink(handleNavigation)}</div>
           </div>
         </nav>
         {/* Show links for desktop */}
-        <div css={menuMobile(optionState)}>{NavBarLink()}</div>
+        <div css={menuMobile(optionState, currentLink)}>
+          {NavBarLink(handleNavigation)}
+        </div>
       </div>
 
       <main css={mainContainer(optionState, modalState)}>
         <div css={layerDisable(optionState, modalState)}> </div>
         <div css={[globalStyles.flexCol, globalStyles.widthFull]}>
+          <Modal modalState={addModal} setModalState={handleShowModal}>
+            <div
+              css={[
+                globalStyles.flexCol,
+                css`
+                  font-family: "Geek", sans-serif;
+                  margin-top: 24px;
+                  display: flex;
+                  height: 100%;
+                  gap: 16px;
+                `,
+              ]}
+            >
+              Collection Name
+              <div
+                css={css`
+                  font-family: "Geek", sans-serif;
+                  font-size: 14px;
+                  color: red;
+                `}
+              >
+                {formError.trim() !== "" && formError}
+              </div>
+              <input
+                value={collectionName}
+                css={css`
+                  height: 25px;
+                  border: 1px solid ${formError.trim() !== "" ? "red" : "black"};
+                  border-radius: 4px;
+                  padding-inline: 6px;
+                `}
+                onChange={(e) => setCollectionName(e.target.value)}
+              />
+              <button
+                css={[
+                  globalStyles.flexRow,
+                  globalStyles.flexCenter,
+                  css`
+                    gap: 6px;
+                    background-color: white;
+                    padding: 8px;
+                    border: 1px solid lightgrey;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    &:hover {
+                      background-color: #f0f0f0;
+                    }
+                  `,
+                ]}
+                onClick={() => handleCreateNewCollection()}
+              >
+                Add Collection
+              </button>
+            </div>
+          </Modal>
           <Outlet />
         </div>
       </main>
@@ -36,19 +149,17 @@ export default function Layout(): JSX.Element {
   );
 }
 
-function NavBarLink() {
-  const { setOption } = useGlobalStorageCtx();
+function NavBarLink(handleNavigation: any) {
   return (
     <>
       {navBarConstant.map((dt, index) => (
-        <Link
+        <div
           key={index}
-          to={dt.url}
           css={desktopLinkStyles}
-          onClick={() => setOption(false)}
+          onClick={() => handleNavigation(dt.url)}
         >
           {dt.title}
-        </Link>
+        </div>
       ))}
     </>
   );
@@ -77,7 +188,7 @@ const mainComponent = css`
 const mainContainer = (optionState: Boolean, modalState: Boolean) => css`
   position: relative;
   height: 100%;
-  overflow: ${optionState || modalState === true ? "hidden" : "auto"};
+  overflow: ${optionState || modalState ? "hidden" : "auto"};
 `;
 
 const navBar = css`
@@ -114,7 +225,7 @@ const container = css`
   }
 `;
 
-const menuMobile = (optionState: Boolean) => css`
+const menuMobile = (optionState: Boolean, route: string) => css`
   display: ${optionState === true ? "flex" : "none"};
   z-index: 99;
   width: 100%;
@@ -123,7 +234,7 @@ const menuMobile = (optionState: Boolean) => css`
   flex-direction: column;
   justify-content: space-between;
   list-style: none;
-  top: 56px;
+  top: ${route == "/collection" ? "80px;" : "56px"}
   position: absolute;
   ${globalStyles.medium} {
     display: none;
@@ -131,7 +242,9 @@ const menuMobile = (optionState: Boolean) => css`
 `;
 
 const desktopLinkStyles = css`
-  padding: 8px 12px;
+  ${globalStyles.flexCenter}
+  justify-content:start;
+  padding: 12px 12px;
   text-decoration: none;
   color: #000;
 

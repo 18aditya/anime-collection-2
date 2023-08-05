@@ -8,6 +8,7 @@ const GlobalStyles: React.FC = () => (
       body: {
         margin: 0,
         padding: 0,
+        fontFamily: "'Geek', sans-serif", 
       },
     }}
   />

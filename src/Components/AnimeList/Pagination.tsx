@@ -51,18 +51,55 @@ export default function Pagination() {
         css={[
           globalStyles.flexRow,
           css`
+            width: 50%;
             justify-content: space-between;
             align-items: center;
-            width: 140px;
+
+            font-size: 12px;
+            ${globalStyles.medium} {
+              font-size: 24px;
+            }
           `,
         ]}
       >
-        <div css={globalStyles.flexRow}>
-          <div>Page {data?.Page.currentPage}</div> /
-          <div>{data?.Page.lastPage}</div>
+        <div
+          css={[
+            globalStyles.flexRow,
+            css`
+              width: 30px;
+              height: 100%;
+              ${globalStyles.medium} {
+                font-size: 24px;
+                width: 100px;
+              }
+            `,
+          ]}
+        >
+          <div>
+            Page {data?.Page.currentPage}/{data?.Page.lastPage}
+          </div>
         </div>
-        <div css={pageStyle}>
-          <div onClick={() => setPageDropdown(!pageDropdown)}>
+        <div
+          css={[
+            pageStyle,
+            css`
+              width: 50px;
+              height: 100%;
+              ${globalStyles.medium} {
+                font-size: 24px;
+                width: 100px;
+              }
+            `,
+          ]}
+        >
+          <div
+            css={[
+              css`
+                width: 100%;
+              `,
+            ]}
+            onClick={() => setPageDropdown(!pageDropdown)}
+          >
             {data?.Page.perPage}/Page
           </div>
 

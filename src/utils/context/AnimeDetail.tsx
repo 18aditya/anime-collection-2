@@ -1,5 +1,8 @@
 import { createContext, useContext } from "react";
-import type { AddAnimeFunction, MediaDetail } from "src/utils/interface/Interface";
+import type {
+  AddAnimeFunction,
+  MediaDetail,
+} from "src/utils/interface/Interface";
 import { ApolloError } from "@apollo/client";
 
 interface AnimeDetailHooks {
@@ -21,6 +24,7 @@ interface AnimeDetailHooks {
   handleAdditionalModalState: () => void;
   addModal: Boolean;
   setAddModal: React.Dispatch<React.SetStateAction<Boolean>>;
+  handleCollectionList: (id: number) => void;
 }
 
 export const AnimeDetailContext = createContext<AnimeDetailHooks | undefined>(

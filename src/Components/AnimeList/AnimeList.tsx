@@ -1,21 +1,27 @@
 /** @jsxImportSource @emotion/react */
 
 import * as globalStyles from "../../utils/styles/global";
-import type { Media } from "src/utils/interface/Interface";
 import { css } from "@emotion/react";
-import { useAnimeListCtx } from "../../utils/context/Context";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CircularLoading } from "../components";
+import { AnimeListProps } from "src/utils/interface/Interface";
+import { useCollectionDetailCtx } from "src/utils/context/Context";
 
-export default function AnimeList() {
-  const { loading, data } = useAnimeListCtx();
+export default function AnimeList({
+  loading,
+  data,
+  handleRemoveAnimeCollection,
+}: AnimeListProps) {
+  const location = useLocation();
+  const pathname = location.pathname;
+  const path = pathname.split("/")[pathname.split("/").length - 2];
 
   return (
     <>
       {loading ? (
         <CircularLoading />
       ) : (
-        data?.Data.map((dt: Media, index: number) => (
+        data?.map((dt: any, index: number) => (
           <Link to={`/anime/${dt.id}`} key={index} css={cardStyle}>
             <img
               src={dt.assets.coverImage.large}
@@ -33,7 +39,43 @@ export default function AnimeList() {
                 <div> {dt.status}</div>
                 <div> {dt.format}</div>
                 <div> {dt.duration} Minute</div>
-                <div> {dt.episodes && `${dt.episodes} Episode`} </div>
+                <div> {dt.episodes !== "?" && `${dt.episodes} Episode`} </div>
+                {path == "collection" && (
+                  <div
+                    css={css`
+                      ${globalStyles.flexCol}
+                      ${globalStyles.medium} {
+                        ${globalStyles.flexRow}
+                      }
+                    `}
+                  >
+                    <button
+                      css={[
+                        globalStyles.flexRow,
+                        globalStyles.flexCenter,
+                        css`
+                          margin-top: 10px;
+                          max-width: 200px;
+                          gap: 6px;
+                          background-color: white;
+                          padding: 8px;
+                          border: 1px solid lightgrey;
+                          border-radius: 4px;
+                          cursor: pointer;
+                          &:hover {
+                            background-color: #f89e9e;
+                          }
+                        `,
+                      ]}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleRemoveAnimeCollection(dt.id);
+                      }}
+                    >
+                      Remove from collection
+                    </button>
+                  </div>
+                )}
               </div>
               <div css={animeDescription}>
                 <div>Description</div>
@@ -71,6 +113,7 @@ const cardStyle = [
     color: black;
     text-decoration: none;
     border: 1px solid black;
+    border-radius: 4px;
   `,
 ];
 
@@ -91,7 +134,9 @@ const bannerImage = [
   css`
     display: none;
     ${globalStyles.medium} {
+      height: 260px;
       display: flex;
+      object-fit: cover;
     }
   `,
 ];
@@ -109,7 +154,7 @@ const cardDetail = [
 const animeDetails = [
   globalStyles.flexCol,
   css`
-    gap: 4px;
+    gap: 2px;
     padding: 4px;
     ${globalStyles.medium} {
       min-width: 200px;

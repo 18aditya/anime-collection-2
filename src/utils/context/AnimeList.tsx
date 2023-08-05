@@ -1,12 +1,12 @@
 import React, { createContext, useContext } from "react";
 import type { Media, PageProperties } from "src/utils/interface/Interface";
 
-interface DataModel {
+export interface DataModel {
   Data: Media[];
   Page: PageProperties;
 }
 
-interface AnimeListHooks {
+export interface AnimeListHooks {
   data: DataModel | null;
   loading: boolean;
   error: any;

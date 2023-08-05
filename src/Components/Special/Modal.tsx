@@ -1,13 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from "@emotion/react";
 import { AiOutlineClose } from "react-icons/ai";
-import * as globalStyles from "../../utils/styles/global";
 
-interface ModalModel {
-  children: React.ReactNode;
-  modalState: Boolean;
-  setModalState: () => void;
-}
+import { ModalModel } from "src/utils/interface/Interface";
+
 const Modal = ({ children, modalState, setModalState }: ModalModel) => {
   return (
     <>
@@ -19,14 +15,15 @@ const Modal = ({ children, modalState, setModalState }: ModalModel) => {
           background-color: grey;
           min-width: 100vw;
           height: 1000000px;
+          z-index: 100000;
         `}
         onClick={setModalState}
       ></div>
       <div
         css={css`
           display: ${modalState ? "flex" : "none"};
-          position: absolute;
-          top: 30%;
+          position: fixed;
+          top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
           background-color: white;
@@ -37,10 +34,8 @@ const Modal = ({ children, modalState, setModalState }: ModalModel) => {
           border-radius: 8px;
           flex-direction: column;
           gap: 7px;
+          z-index: 100000;
           animation: ${slideInAnimation} 0.3s forwards;
-          ${globalStyles.medium} {
-            top: 50%;
-          }
         `}
       >
         <div

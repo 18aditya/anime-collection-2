@@ -3,18 +3,8 @@
 import * as globalStyles from "../../utils/styles/global";
 import { css } from "@emotion/react";
 import { AiOutlineHeart } from "react-icons/ai";
+import { ButtonProps } from "src/utils/interface/Interface";
 
-interface StyleDefault {
-  width?: string | null;
-  marginBlock?: string | null;
-  display?: string | null;
-}
-
-interface ButtonProps {
-  setModalState: ()=>void;
-  styleDefault: StyleDefault;
-  styleBreakpoint: StyleDefault;
-}
 
 const AddToCollection = ({
   setModalState,

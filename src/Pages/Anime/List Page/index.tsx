@@ -5,7 +5,7 @@ import * as globalStyles from "../../../utils/styles/global";
 import { Pagination, AnimeList } from "../../../Components/components";
 
 import useAnimeData from "../../../utils/hooks/useAnimeList";
-import { AnimeListCtx } from "../../../utils/context/Context";
+import { AnimeListCtx, useAnimeListCtx } from "src/utils/context/Context";
 
 export default function Page() {
   const useAnimeListContext = useAnimeData();
@@ -18,6 +18,7 @@ export default function Page() {
 }
 
 function Content() {
+  const { loading, data } = useAnimeListCtx();
   return (
     <div
       css={[
@@ -34,7 +35,9 @@ function Content() {
             position: relative;
             height: 250px;
             border-bottom: 1px solid black;
-            background-image: url("https://amymhaddad.s3.amazonaws.com/morocco-blue.png");
+            background-image: url("https://s4.anilist.co/file/anilistcdn/media/anime/banner/131573-3veuVz5p0z2I.jpg");
+            background-position: center;
+            background-size: cover;
           `,
         ]}
       >
@@ -53,6 +56,8 @@ function Content() {
           css={[
             globalStyles.flexCenter,
             css`
+              font-family: "Bits", sans-serif;
+              font-size: 40px;
               position: relative;
               z-index: 10;
             `,
@@ -66,14 +71,16 @@ function Content() {
           globalStyles.flexCol,
           globalStyles.flexCenter,
           css`
-            width: 80%;
             padding: 12px;
             gap: 24px;
+            ${globalStyles.medium} {
+              width: 80%;
+            }
           `,
         ]}
       >
         On-going Anime
-        <AnimeList />
+        <AnimeList loading={loading} data={data?.Data} />
         <Pagination />
       </div>
     </div>

@@ -21,10 +21,7 @@ import {
 } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import { GlobalStorageDataProps } from "../../../utils/context/GlobalStorage";
-
-interface GenreContainerProps {
-  display: string;
-}
+import { GenreContainerProps } from "src/utils/interface/Interface";
 
 export default function Page() {
   const location = useLocation();
@@ -51,14 +48,12 @@ function Content() {
     handleAddAnimeCollection,
     formError,
     collectionModal,
- 
     handleCollectionModalState,
     handleAdditionalModalState,
+    handleCollectionList,
     addModal,
-
   } = useAnimeDetailCtx();
-  const { GlobalStorageData } =
-    useGlobalStorageCtx();
+  const { GlobalStorageData } = useGlobalStorageCtx();
   if (loading) {
     return <LoadingComponent />;
   }
@@ -75,7 +70,67 @@ function Content() {
       <Modal
         modalState={collectionModal}
         setModalState={handleCollectionModalState}
-      >a</Modal>
+      >
+        <div
+          css={[
+            globalStyles.flexCol,
+            css`
+              gap: 12px;
+            `,
+          ]}
+        >
+          Anime is in this lists.
+          <div
+            css={[
+              globalStyles.flexCol,
+              css`
+                max-height: 200px;
+                overflow: auto;
+                gap: 8px;
+              `,
+            ]}
+          >
+            {GlobalStorageData.length > 0 ? (
+              GlobalStorageData.map(
+                (dt: GlobalStorageDataProps, index: number) => {
+                  const animeExistsInCollection = dt.animes.some(
+                    (coll) => coll.id === data?.id
+                  );
+                  if (animeExistsInCollection) {
+                    return (
+                      <button
+                        key={index}
+                        css={[
+                          globalStyles.flexRow,
+                          globalStyles.flexCenter,
+                          css`
+                          gap: 6px;
+                          background-color:white;
+                          padding: 8px;
+                          border: 1px solid lightgrey;
+                          border-radius: 4px;
+                          cursor: pointer;
+                          &:hover {
+                            background-color:" #f0f0f0"};
+                          }
+                        `,
+                        ]}
+                        onClick={() =>
+                          handleCollectionList(dt.id)
+                        }
+                      >
+                        {dt.collection_title}
+                      </button>
+                    );
+                  }
+                }
+              )
+            ) : (
+              <div css={[globalStyles.flexCenter]}>Anime is not in any Collections</div>
+            )}
+          </div>
+        </div>
+      </Modal>
       <Modal modalState={addModal} setModalState={handleAdditionalModalState}>
         <div
           css={[
@@ -130,8 +185,16 @@ function Content() {
                         collId: dt.id,
                         id: data?.id,
                         title: data?.title,
-                        coverImage: data?.assets.coverImage,
-                        bannerImage: data?.assets.bannerImage,
+                        assets: {
+                          coverImage: data?.assets.coverImage,
+                          bannerImage: data?.assets.bannerImage,
+                        },
+                        popularity: data?.popularity,
+                        status: data?.status,
+                        episodes: data?.episodes,
+                        duration: data?.duration,
+                        description: data?.description,
+                        format: data?.format,
                       })
                     }
                   >
@@ -451,6 +514,7 @@ const DetailContainer = () => {
             globalStyles.flexRow,
             globalStyles.flexCenter,
             css`
+              display: none;
               gap: 6px;
               background-color: white;
               padding: 8px;
@@ -485,12 +549,12 @@ const InfoContainer = () => {
           globalStyles.flexCol,
           css`
             gap: 6px;
-            min-width: 150px;
           `,
         ]}
       >
         <div
           css={css`
+            width: 100%;
             font-size: 18px;
             font-weight: 100;
             color: #7a7a7a;
@@ -534,6 +598,7 @@ const InfoContainer = () => {
         >
           <div
             css={css`
+              width: 100%;
               font-size: 18px;
               font-weight: 100;
               color: #7a7a7a;
@@ -560,6 +625,7 @@ const InfoContainer = () => {
         >
           <div
             css={css`
+              width: 100%;
               font-size: 18px;
               font-weight: 100;
               color: #7a7a7a;
@@ -586,11 +652,12 @@ const GenreContainer = ({ display }: GenreContainerProps) => {
   return (
     <div
       css={css`
-        max-width: 240px;
+        width: 80%;
         display: ${display === "mobile" ? "flex" : "none"};
 
         ${globalStyles.medium} {
           display: ${display === "desktop" ? "flex" : "none"};
+          width: 250px;
         }
       `}
     >
@@ -606,6 +673,7 @@ const GenreContainer = ({ display }: GenreContainerProps) => {
       >
         <div
           css={css`
+            width: 100%;
             font-size: 18px;
             font-weight: 100;
             color: #7a7a7a;
@@ -617,6 +685,7 @@ const GenreContainer = ({ display }: GenreContainerProps) => {
           css={[
             globalStyles.flexRow,
             css`
+              width: 100%;
               flex-wrap: wrap;
               font-size: 22px;
               font-weight: 400;
@@ -701,6 +770,8 @@ const bannerImage = [
     display: none;
     ${globalStyles.medium} {
       display: flex;
+      object-fit: cover;
+      height: 414px;
     }
   `,
 ];
