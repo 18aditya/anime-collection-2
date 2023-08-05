@@ -5,7 +5,7 @@ import { css } from "@emotion/react";
 import { Link, useLocation } from "react-router-dom";
 import { CircularLoading } from "../components";
 import { AnimeListProps } from "src/utils/interface/Interface";
-import { useCollectionDetailCtx } from "src/utils/context/Context";
+
 
 export default function AnimeList({
   loading,
@@ -40,7 +40,7 @@ export default function AnimeList({
                 <div> {dt.format}</div>
                 <div> {dt.duration} Minute</div>
                 <div> {dt.episodes !== "?" && `${dt.episodes} Episode`} </div>
-                {path == "collection" && (
+                {path === "collection" && (
                   <div
                     css={css`
                       ${globalStyles.flexCol}

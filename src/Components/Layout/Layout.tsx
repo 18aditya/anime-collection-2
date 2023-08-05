@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { navBarConstant } from "../../constant/navbar";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { css } from "@emotion/react";
 import * as globalStyles from "../../utils/styles/global";
@@ -234,7 +234,7 @@ const menuMobile = (optionState: Boolean, route: string) => css`
   flex-direction: column;
   justify-content: space-between;
   list-style: none;
-  top: ${route == "/collection" ? "80px;" : "56px"}
+  top: ${route === "/collection" ? "80px;" : "56px"}
   position: absolute;
   ${globalStyles.medium} {
     display: none;

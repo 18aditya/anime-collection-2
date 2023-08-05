@@ -6,7 +6,7 @@ import { GlobalStorageDataProps } from "../context/GlobalStorage";
 
 const useCollectionDetail = (id: number) => {
   const {
-    updateGlobalStorage,
+
     GlobalStorageData,
     modalState,
     setModalState,
@@ -25,7 +25,7 @@ const useCollectionDetail = (id: number) => {
   const [formError, setFormError] = useState<string>("");
 
   const handleModifyCollectionTitle = () => {
-    if (newTitle.trim() == "") {
+    if (newTitle.trim() === "") {
       setFormError("Collection cannot be empty");
       return;
     }

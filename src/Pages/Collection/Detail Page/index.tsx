@@ -7,7 +7,7 @@ import { useCollectionDetail } from "src/utils/hooks/Hooks";
 import {
   CollectionDetailCtx,
   useCollectionDetailCtx,
-  useCollectionListCtx,
+
 } from "src/utils/context/Context";
 import { AnimeList, Modal } from "src/Components/components";
 
@@ -30,7 +30,7 @@ function Content() {
     formError,
     handleModifyCollectionTitle,
     newTitle,
-    collectionName,
+
     loading,
     data,
     handleRemoveAnimeCollection,

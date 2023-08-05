@@ -8,7 +8,7 @@ import {
   useCollectionListCtx,
 } from "src/utils/context/Context";
 import { Link } from "react-router-dom";
-import { AiFillDelete, AiFillEdit, AiOutlineFolderAdd } from "react-icons/ai";
+import { AiFillDelete, AiFillEdit,  } from "react-icons/ai";
 import { Modal } from "src/Components/components";
 
 export default function Page() {
@@ -67,7 +67,7 @@ function Content() {
             <div>Hold up!! Are you sure you want delete</div>
             <div>
               {
-                GlobalStorageData.find((dt) => dt.id == deleteId)
+                GlobalStorageData.find((dt) => dt.id === deleteId)
                   ?.collection_title
               }
             </div>

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useQuery } from "@apollo/client";
+
 import { useGlobalStorageCtx } from "../context/Context";
 
 const useCollectionList = () => {
   const {
-    updateGlobalStorage,
+
     GlobalStorageData,
     modalState,
     setModalState,
@@ -20,7 +20,7 @@ const useCollectionList = () => {
   const [formError, setFormError] = useState<string>("");
 
   const handleModifyCollectionTitle = () => {
-    if (newTitle.trim() == "") {
+    if (newTitle.trim() === "") {
       setFormError("Collection cannot be empty");
       return;
     }

@@ -93,7 +93,7 @@ const useAnimeDetail = (id: number) => {
   };
 
   const handleCreateNewCollection = () => {
-    if (collectionName.trim() == "") {
+    if (collectionName.trim() === "") {
       setFormError("Collection cannot be empty");
       return;
     }
