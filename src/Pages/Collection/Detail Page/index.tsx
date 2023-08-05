@@ -7,7 +7,6 @@ import { useCollectionDetail } from "src/utils/hooks/Hooks";
 import {
   CollectionDetailCtx,
   useCollectionDetailCtx,
-
 } from "src/utils/context/Context";
 import { AnimeList, Modal } from "src/Components/components";
 
@@ -30,12 +29,14 @@ function Content() {
     formError,
     handleModifyCollectionTitle,
     newTitle,
-
+    removeModal,
+    handleRemoveModalState,
     loading,
     data,
     handleRemoveAnimeCollection,
     editModal,
     handleEditModalState,
+    removedAnime,
   } = useCollectionDetailCtx();
 
   return (
@@ -121,6 +122,85 @@ function Content() {
           </div>
         </div>
       </Modal>
+      <Modal modalState={removeModal} setModalState={handleRemoveModalState}>
+        <div
+          css={[
+            globalStyles.flexCol,
+            css`
+              width: 100%;
+              justify-content: space-between;
+              height: 100px;
+            `,
+          ]}
+        >
+          <div
+            css={css`
+              text-align: center;
+              font-size: 8x;
+              ${globalStyles.medium} {
+                font-size: 24px;
+              }
+            `}
+          >
+            <div>Hold up!! Are you sure you want delete</div>
+            <div>{removedAnime.title}</div>
+          </div>
+          <div
+            css={[
+              globalStyles.flexRow,
+              globalStyles.flexCenter,
+              css`
+                gap: 24px;
+              `,
+            ]}
+          >
+            <button
+              css={[
+                globalStyles.flexRow,
+                globalStyles.flexCenter,
+                css`
+                  width: 100px;
+                  gap: 6px;
+                  background-color: white;
+                  padding: 8px;
+                  border: 0px;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  background-color: #ffbaba;
+                  &:hover {
+                    background-color: #f89e9e;
+                  }
+                `,
+              ]}
+              onClick={() => handleRemoveModalState("")}
+            >
+              No
+            </button>
+            <button
+              css={[
+                globalStyles.flexRow,
+                globalStyles.flexCenter,
+                css`
+                  width: 100px;
+                  gap: 6px;
+                  background-color: white;
+                  padding: 8px;
+                  border: 0px;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  background-color: #b2d8b2;
+                  &:hover {
+                    background-color: #99cc99;
+                  }
+                `,
+              ]}
+              onClick={handleRemoveAnimeCollection}
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </Modal>
       <div
         css={[
           globalStyles.flexRow,
@@ -173,7 +253,7 @@ function Content() {
         <AnimeList
           loading={loading}
           data={data?.animes}
-          handleRemoveAnimeCollection={handleRemoveAnimeCollection}
+          handleRemoveModalState={handleRemoveModalState}
         />
       </div>
     </div>

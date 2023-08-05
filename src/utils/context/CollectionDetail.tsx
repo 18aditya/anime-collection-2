@@ -12,11 +12,13 @@ interface CollectionDetailHooks {
   data: GlobalStorageDataProps | undefined;
   handleRemoveAnimeCollection: (id: any | undefined) => void;
   handleEditModalState: () => void;
-  handleRemoveModalState: () => void;
+  handleRemoveModalState: (id: any) => void;
   handleModifyCollectionTitle: () => void;
   editModal: Boolean;
   newTitle: string;
   setNewTitle: React.Dispatch<React.SetStateAction<string>>;
+  removeModal: Boolean;
+  removedAnime: any;
 }
 
 export const CollectionDetailContext = createContext<

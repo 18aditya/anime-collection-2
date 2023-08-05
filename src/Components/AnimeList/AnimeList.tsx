@@ -10,7 +10,7 @@ import { AnimeListProps } from "src/utils/interface/Interface";
 export default function AnimeList({
   loading,
   data,
-  handleRemoveAnimeCollection,
+  handleRemoveModalState,
 }: AnimeListProps) {
   const location = useLocation();
   const pathname = location.pathname;
@@ -69,7 +69,7 @@ export default function AnimeList({
                       ]}
                       onClick={(e) => {
                         e.preventDefault();
-                        handleRemoveAnimeCollection(dt.id);
+                        handleRemoveModalState(dt.id);
                       }}
                     >
                       Remove from collection

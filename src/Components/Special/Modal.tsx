@@ -17,7 +17,7 @@ const Modal = ({ children, modalState, setModalState }: ModalModel) => {
           height: 1000000px;
           z-index: 100000;
         `}
-        onClick={setModalState}
+        onClick={()=>setModalState()}
       ></div>
       <div
         css={css`
@@ -45,7 +45,7 @@ const Modal = ({ children, modalState, setModalState }: ModalModel) => {
             justify-content: end;
           `}
         >
-          <AiOutlineClose onClick={setModalState} />
+          <AiOutlineClose onClick={()=>setModalState()} />
         </div>
         {children}
       </div>

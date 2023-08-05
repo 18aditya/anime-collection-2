@@ -6,7 +6,6 @@ import { GlobalStorageDataProps } from "../context/GlobalStorage";
 
 const useCollectionDetail = (id: number) => {
   const {
-
     GlobalStorageData,
     modalState,
     setModalState,
@@ -17,7 +16,7 @@ const useCollectionDetail = (id: number) => {
   const navigate = useNavigate();
   const [collectionName, setCollectionName] = useState<number>(id);
   const [data, setData] = useState<GlobalStorageDataProps>();
-
+  const [removedAnime, setRemovedAnime] = useState<any>({});
   const [removeModal, setRemoveModal] = useState<Boolean>(false);
   const [editModal, setEditModal] = useState<Boolean>(false);
 
@@ -65,9 +64,7 @@ const useCollectionDetail = (id: number) => {
   };
 
   useEffect(() => {
-    const temp = GlobalStorageData.find(
-      (dt) => dt.id === collectionName
-    );
+    const temp = GlobalStorageData.find((dt) => dt.id === collectionName);
     setData(temp);
   }, [collectionName, GlobalStorageData]);
 
@@ -76,7 +73,16 @@ const useCollectionDetail = (id: number) => {
     navigate(`/collection/${id}`);
   };
 
-  const handleRemoveModalState = () => {
+  const handleRemoveModalState = (id: number) => {
+    if (id) {
+      const removeAnimes = data?.animes.filter((anime) => anime.id === id);
+      if (removeAnimes) {
+        setRemovedAnime({
+          title: removeAnimes[0].title,
+          id: removeAnimes[0].id,
+        });
+      }
+    }
     setRemoveModal(!removeModal);
     setModalState(!modalState);
   };
@@ -86,11 +92,13 @@ const useCollectionDetail = (id: number) => {
     setModalState(!modalState);
   };
 
-  const handleRemoveAnimeCollection = (id: any) => {
+  const handleRemoveAnimeCollection = () => {
     const temp = data;
 
     if (temp) {
-      const removeAnimes = temp.animes.filter((anime) => anime.id !== id);
+      const removeAnimes = temp.animes.filter(
+        (anime) => anime.id !== removedAnime.id
+      );
 
       const res = { ...temp, animes: removeAnimes };
 
@@ -103,6 +111,8 @@ const useCollectionDetail = (id: number) => {
         JSON.stringify(updatedGlobalStorageData)
       );
       setGlobalStorageData(updatedGlobalStorageData);
+      setRemoveModal(!removeModal);
+      setModalState(!modalState);
     }
   };
 
@@ -123,6 +133,8 @@ const useCollectionDetail = (id: number) => {
     handleModifyCollectionTitle,
     newTitle,
     setNewTitle,
+    removeModal,
+    removedAnime,
   };
 };
 

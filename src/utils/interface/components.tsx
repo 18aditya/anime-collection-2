@@ -13,13 +13,13 @@ export interface buttonProps {
 export interface animeListProps {
   loading: Boolean;
   data: any;
-  handleRemoveAnimeCollection?: any;
+  handleRemoveModalState?: any;
 }
 
 export interface modalModel {
   children: React.ReactNode;
   modalState: Boolean;
-  setModalState: () => void;
+  setModalState: any;
 }
 
 export interface genreContainerProps {

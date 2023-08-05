@@ -377,14 +377,14 @@ function Content() {
                       display: none;
                       width: 100%;
                       font-weight: 700;
-                      font-size: 24px;
+                      font-size: 18px;
                       ${globalStyles.medium} {
                         display: flex;
                       }
                     `}
                   >
-                    {dt.collection_title.length > 15
-                      ? `${dt.collection_title.slice(0, 15)}...`
+                    {dt.collection_title.length > 10
+                      ? `${dt.collection_title.slice(0, 10)}...`
                       : dt.collection_title}
                   </div>
                 </Link>
