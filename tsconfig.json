@@ -17,11 +17,11 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "../../utils/interface/*": ["src/Utils/Interface/*"],
+      "../../Utils/Interface/*": ["src/Utils/Interface/*"],
       "../../Components/*": ["src/Components/*"],
-      "../../utils/api/*": ["src/Utils/Api/*"],
-      "../../utils/context/*": ["src/Utils/Context/*"],
-      "../../utils/hooks/*": ["src/Utils/Hooks/*"]
+      "../../Utils/Api/*": ["src/Utils/Api/*"],
+      "../../Utils/Context/*": ["src/Utils/Context/*"],
+      "../../Utils/Hooks/*": ["src/Utils/Hooks/*"]
     }
   },
   "include": ["src"]
