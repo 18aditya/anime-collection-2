@@ -30,3 +30,19 @@ export const layoutContainer = [
     height: calc(100vh - 66px);
   `,
 ];
+
+export const fontStyles = css`
+  @font-face {
+    font-family: "Bits";
+    src: url("../../../public/ARCADE.TTF") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Geek";
+    src: url("../../../public/JetBrainsMono-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+`;

@@ -6,7 +6,6 @@ import GlobalStyles from "./globalStyles";
 import { Client } from "src/Utils/API";
 import { ApolloProvider } from "@apollo/client";
 import { GlobalStorageProvider } from "src/Utils/Context";
-import "src/Utils/styles/fonts.css";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
