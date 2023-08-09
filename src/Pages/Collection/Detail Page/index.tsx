@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import * as globalStyles from "src/Utils/styles/global";
+import * as globalStyles from "src/Utils/Styles";
 import { css } from "@emotion/react";
 import { useLocation } from "react-router-dom";
 import { useCollectionDetail } from "src/Utils/Hooks";

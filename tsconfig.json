@@ -22,7 +22,7 @@
       "src/Utils/API/*": ["src/Utils/API/*"],
       "src/Utils/Context/*": ["src/Utils/Context/*"],
       "src/Utils/Hooks/*": ["src/Utils/Hooks/*"],
-      "src/Utils/styles/*": ["src/Utils/Styles/*"]
+      "src/Utils/Styles/*": ["src/Utils/Styles/*"]
     }
   },
   "include": ["src"]

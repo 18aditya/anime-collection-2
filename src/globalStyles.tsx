@@ -1,7 +1,7 @@
 // globalStyles.tsx
 
 import { Global } from "@emotion/react";
-import { fontStyles } from "src/Utils/Styles/global";
+import { fontStyles } from "src/Utils/Styles";
 
 const GlobalStyles: React.FC = () => (
   <Global

@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
-import * as globalStyles from "src/Utils/styles/global";
+import * as globalStyles from "src/Utils/Styles";
 import { useCollectionList } from "src/Utils/Hooks";
 import { CollectionListCtx, useCollectionListCtx } from "src/Utils/Context";
 import { Link } from "react-router-dom";

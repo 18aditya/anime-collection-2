@@ -2,7 +2,7 @@
 
 import { css } from "@emotion/react";
 import { GrPlay, GrFastForward } from "react-icons/gr";
-import * as globalStyles from "src/Utils/styles/global";
+import * as globalStyles from "src/Utils/Styles";
 import { useAnimeListCtx } from "src/Utils/Context";
 
 export default function Pagination() {

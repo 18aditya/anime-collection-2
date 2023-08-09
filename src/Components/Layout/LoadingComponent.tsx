@@ -2,7 +2,7 @@
 
 import { css } from "@emotion/react";
 import { CircularLoading } from "src/Components";
-import * as globalStyles from "src/Utils/styles/global";
+import * as globalStyles from "src/Utils/Styles";
 
 const LoadingComponent = () => {
   return (
