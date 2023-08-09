@@ -17,12 +17,12 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "../../Utils/Api/api": ["src/Utils/Api/api"],
-      "../../Utils/Interface/*": ["src/Utils/Interface/*"],
-      "../../Components/*": ["src/Components/*"],
-      "../../Utils/Api/*": ["src/Utils/Api/*"],
-      "../../Utils/Context/*": ["src/Utils/Context/*"],
-      "../../Utils/Hooks/*": ["src/Utils/Hooks/*"]
+      "src/Utils/Api/api": ["src/Utils/Api/api"],
+      "src/Utils/Interface/*": ["src/Utils/Interface/*"],
+      "src/Components/*": ["src/Components/*"],
+      "src/Utils/Api/*": ["src/Utils/Api/*"],
+      "src/Utils/Context/*": ["src/Utils/Context/*"],
+      "src/Utils/Hooks/*": ["src/Utils/Hooks/*"]
     }
   },
   "include": ["src"]
