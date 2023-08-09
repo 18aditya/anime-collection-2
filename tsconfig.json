@@ -20,7 +20,7 @@
       "src/*": ["src/*"],
       "src/Utils/Interface/*": ["src/Utils/Interface/*"],
       "src/Components/*": ["src/Components/*"],
-      "@Api/*": ["src/Utils/Api/*"],
+      "src/Utils/Conn/*": ["src/Utils/Api/*"],
       "src/Utils/Context/*": ["src/Utils/Context/*"],
       "src/Utils/Hooks/*": ["src/Utils/Hooks/*"],
       "src/Utils/styles/*": ["src/Utils/Styles/*"]
