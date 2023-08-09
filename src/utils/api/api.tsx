@@ -4,7 +4,9 @@ const httpLink = createHttpLink({
   uri: process.env.REACT_APP_API_URL,
 });
 
-export const client = new ApolloClient({
+const client = new ApolloClient({
   link: httpLink,
   cache: new InMemoryCache(),
 });
+
+export default client;
