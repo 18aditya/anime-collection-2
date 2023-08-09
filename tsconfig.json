@@ -15,9 +15,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "src/Utils/Api/api": ["src/Utils/Api/api"],
       "src/Utils/Interface/*": ["src/Utils/Interface/*"],
       "src/Components/*": ["src/Components/*"],
       "src/Utils/Api/*": ["src/Utils/Api/*"],
