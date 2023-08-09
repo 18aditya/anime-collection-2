@@ -21,7 +21,8 @@
       "src/Components/*": ["src/Components/*"],
       "src/Utils/Apis/*": ["src/Utils/Apis/*"],
       "src/Utils/Context/*": ["src/Utils/Context/*"],
-      "src/Utils/Hooks/*": ["src/Utils/Hooks/*"]
+      "src/Utils/Hooks/*": ["src/Utils/Hooks/*"],
+      "src/Utils/styles/*": ["src/Utils/Styles/*"]
     }
   },
   "include": ["src"]

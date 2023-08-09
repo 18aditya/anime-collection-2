@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
-import { css } from "@emotion/react";
 import * as globalStyles from "src/Utils/styles/global";
+import { css } from "@emotion/react";
 import { Pagination, AnimeList } from "src/Components/components";
 
 import useAnimeData from "src/Utils/Hooks/useAnimeList";
