@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { getAnimeDetailByID } from "src/Utils/Api/query/query";
+import { getAnimeDetailByID } from "src/Utils/Api/Query/query";
 import type {
   MediaDetail,
   AddAnimeFunction,
