@@ -5,13 +5,9 @@ import {
   AnimeDetailCtx,
   useAnimeDetailCtx,
   useGlobalStorageCtx,
-} from "src/Utils/Context/context";
-import { useAnimeDetail } from "src/Utils/Hooks/hooks";
-import {
-  AddToCollection,
-  LoadingComponent,
-  Modal,
-} from "src/Components/components";
+} from "src/Utils/Context";
+import { useAnimeDetail } from "src/Utils/Hooks";
+import { AddToCollection, LoadingComponent, Modal } from "src/Components";
 import { css } from "@emotion/react";
 import {
   AiOutlineStar,
@@ -20,8 +16,8 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
-import { GlobalStorageDataProps } from "src/Utils/Interface/interface";
-import { GenreContainerProps } from "src/Utils/Interface/interface";
+import { GlobalStorageDataProps } from "src/Utils/Interface";
+import { GenreContainerProps } from "src/Utils/Interface";
 
 export default function Page() {
   const location = useLocation();

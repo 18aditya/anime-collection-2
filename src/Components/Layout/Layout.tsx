@@ -5,9 +5,9 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { css } from "@emotion/react";
 import * as globalStyles from "src/Utils/styles/global";
-import { useGlobalStorageCtx } from "src/Utils/Context/context";
+import { useGlobalStorageCtx } from "src/Utils/Context";
 import { useLocation } from "react-router-dom";
-import { Modal } from "src/Components/components";
+import { Modal } from "src/Components";
 export default function Layout(): JSX.Element {
   const {
     modalState,

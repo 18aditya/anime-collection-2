@@ -2,7 +2,7 @@
 import { css, keyframes } from "@emotion/react";
 import { AiOutlineClose } from "react-icons/ai";
 
-import { ModalModel } from "src/Utils/Interface/interface";
+import { ModalModel } from "src/Utils/Interface";
 
 const Modal = ({ children, modalState, setModalState }: ModalModel) => {
   return (

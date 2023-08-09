@@ -2,14 +2,11 @@
 
 import { css } from "@emotion/react";
 import * as globalStyles from "src/Utils/styles/global";
-import { useCollectionList } from "src/Utils/Hooks/hooks";
-import {
-  CollectionListCtx,
-  useCollectionListCtx,
-} from "src/Utils/Context/context";
+import { useCollectionList } from "src/Utils/Hooks";
+import { CollectionListCtx, useCollectionListCtx } from "src/Utils/Context";
 import { Link } from "react-router-dom";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { Modal } from "src/Components/components";
+import { Modal } from "src/Components";
 
 export default function Page() {
   const useCollectionListContext = useCollectionList();

@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { GlobalStorageDataProps } from "src/Utils/Interface/interface";
+import { GlobalStorageDataProps } from "src/Utils/Interface";
 
 interface CollectionDetailHooks {
   modalState: Boolean;

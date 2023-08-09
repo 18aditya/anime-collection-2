@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { GlobalStorageDataProps } from "src/Utils/Interface/interface";
+import { GlobalStorageDataProps } from "src/Utils/Interface";
 
 const useGlobalStorage = () => {
   //layout component

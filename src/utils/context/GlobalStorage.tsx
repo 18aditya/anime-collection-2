@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
-import { useGlobalStorage } from "src/Utils/Hooks/hooks";
-import type { GlobalStorageDataProps } from "src/Utils/Interface/interface";
+import { useGlobalStorage } from "src/Utils/Hooks";
+import type { GlobalStorageDataProps } from "src/Utils/Interface";
 
 export interface GlobalStorageContextType {
   GlobalStorageData: Array<GlobalStorageDataProps>;

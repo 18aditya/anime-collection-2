@@ -3,8 +3,8 @@
 import * as globalStyles from "src/Utils/styles/global";
 import { css } from "@emotion/react";
 import { Link, useLocation } from "react-router-dom";
-import { CircularLoading } from "src/Components/components";
-import { AnimeListProps } from "src/Utils/Interface/interface";
+import { CircularLoading } from "src/Components";
+import { AnimeListProps } from "src/Utils/Interface";
 
 export default function AnimeList({
   loading,

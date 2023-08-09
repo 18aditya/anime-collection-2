@@ -6,7 +6,7 @@ import {
   CollectionDetail,
   CollectionList,
 } from "../Pages/pages";
-import { Layout } from "../Components/components";
+import { Layout } from "../Components";
 
 const router = createBrowserRouter([
   {

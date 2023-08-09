@@ -1,4 +1,4 @@
-import { Media } from "src/Utils/Interface/interface";
+import { Media } from "src/Utils/Interface";
 
 export interface globalStorageDataProps {
   id: number;

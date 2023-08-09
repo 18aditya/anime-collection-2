@@ -2,10 +2,10 @@
 
 import * as globalStyles from "src/Utils/styles/global";
 import { css } from "@emotion/react";
-import { Pagination, AnimeList } from "src/Components/components";
+import { Pagination, AnimeList } from "src/Components";
 
 import useAnimeData from "src/Utils/Hooks/useAnimeList";
-import { AnimeListCtx, useAnimeListCtx } from "src/Utils/Context/context";
+import { AnimeListCtx, useAnimeListCtx } from "src/Utils/Context";
 
 export default function Page() {
   const useAnimeListContext = useAnimeData();

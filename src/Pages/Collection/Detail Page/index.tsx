@@ -3,12 +3,9 @@
 import * as globalStyles from "src/Utils/styles/global";
 import { css } from "@emotion/react";
 import { useLocation } from "react-router-dom";
-import { useCollectionDetail } from "src/Utils/Hooks/hooks";
-import {
-  CollectionDetailCtx,
-  useCollectionDetailCtx,
-} from "src/Utils/Context/context";
-import { AnimeList, Modal } from "src/Components/components";
+import { useCollectionDetail } from "src/Utils/Hooks";
+import { CollectionDetailCtx, useCollectionDetailCtx } from "src/Utils/Context";
+import { AnimeList, Modal } from "src/Components";
 
 export default function Page() {
   const location = useLocation();

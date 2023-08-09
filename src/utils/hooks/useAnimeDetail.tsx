@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GetAnimeDetailByID } from "src/Utils/Apis/api";
-import type {
-  MediaDetail,
-  AddAnimeFunction,
-} from "src/Utils/Interface/interface";
-import { useGlobalStorageCtx } from "src/Utils/Context/context";
+import { GetAnimeDetailByID } from "src/Utils/Apis";
+import type { MediaDetail, AddAnimeFunction } from "src/Utils/Interface";
+import { useGlobalStorageCtx } from "src/Utils/Context";
 import { useNavigate } from "react-router-dom";
 
 const useAnimeDetail = (id: number) => {
