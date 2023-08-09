@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { getTrendingAnime } from "src/Utils/Api/Query/query";
+import { GetTrendingAnime } from "src/Utils/Api/api";
 import type { Media, PageProperties } from "src/Utils/Interface/interface";
 
 interface DataModel {
@@ -17,7 +17,7 @@ const useAnimeData = () => {
     loading,
     error,
     data: queryData,
-  } = useQuery(getTrendingAnime, {
+  } = useQuery(GetTrendingAnime, {
     variables: { page: page, perPage: perPage },
   });
 

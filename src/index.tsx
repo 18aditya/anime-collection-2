@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { RouterProvider } from "react-router-dom";
 import router from "./Routes/routes";
 import GlobalStyles from "./globalStyles";
-import client from "src/Utils/Api/api";
+import { Client } from "src/Utils/Api/api";
 import { ApolloProvider } from "@apollo/client";
 import { GlobalStorageProvider } from "src/Utils/Context/context";
 import "src/Utils/styles/fonts.css";
@@ -11,7 +11,7 @@ import "src/Utils/styles/fonts.css";
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
+    <ApolloProvider client={Client}>
       <GlobalStorageProvider>
         <GlobalStyles />
         <RouterProvider router={router} />

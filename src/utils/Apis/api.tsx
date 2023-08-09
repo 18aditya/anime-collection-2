@@ -9,4 +9,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export default client;
+export { client as Client };
+export { getTrendingAnime as GetTrendingAnime } from "./Query/query";
+export { getAnimeDetailByID as GetAnimeDetailByID } from "./Query/query";

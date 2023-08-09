@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { getAnimeDetailByID } from "src/Utils/Api/Query/query";
+import { GetAnimeDetailByID } from "src/Utils/Api/api";
 import type {
   MediaDetail,
   AddAnimeFunction,
@@ -21,7 +21,7 @@ const useAnimeDetail = (id: number) => {
     loading,
     error,
     data: queryData,
-  } = useQuery(getAnimeDetailByID, {
+  } = useQuery(GetAnimeDetailByID, {
     variables: { id: id },
   });
   const navigate = useNavigate();
