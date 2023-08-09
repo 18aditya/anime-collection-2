@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { RouterProvider } from "react-router-dom";
 import router from "./Routes/routes";
 import GlobalStyles from "./globalStyles";
-import { Client } from "src/Utils/Apis/api";
+import { Client } from "../src/Utils/Apis/api";
 import { ApolloProvider } from "@apollo/client";
 import { GlobalStorageProvider } from "src/Utils/Context/context";
 import "src/Utils/styles/fonts.css";
