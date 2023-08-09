@@ -1,17 +1,17 @@
 /** @jsxImportSource @emotion/react */
 
-import * as globalStyles from "../../../utils/styles/global";
+import * as globalStyles from "src/Utils/styles/global";
 import {
   AnimeDetailCtx,
   useAnimeDetailCtx,
   useGlobalStorageCtx,
-} from "../../../utils/context/Context";
-import { useAnimeDetail } from "../../../utils/hooks/Hooks";
+} from "src/Utils/Context/context";
+import { useAnimeDetail } from "src/Utils/Hooks/hooks";
 import {
   AddToCollection,
   LoadingComponent,
   Modal,
-} from "../../../Components/components";
+} from "src/Components/components";
 import { css } from "@emotion/react";
 import {
   AiOutlineStar,
@@ -20,8 +20,8 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
-import { GlobalStorageDataProps } from "../../../utils/context/GlobalStorage";
-import { GenreContainerProps } from "src/utils/interface/Interface";
+import { GlobalStorageDataProps } from "src/Utils/Interface/interface";
+import { GenreContainerProps } from "src/Utils/Interface/interface";
 
 export default function Page() {
   const location = useLocation();
@@ -115,9 +115,7 @@ function Content() {
                           }
                         `,
                         ]}
-                        onClick={() =>
-                          handleCollectionList(dt.id)
-                        }
+                        onClick={() => handleCollectionList(dt.id)}
                       >
                         {dt.collection_title}
                       </button>
@@ -126,7 +124,9 @@ function Content() {
                 }
               )
             ) : (
-              <div css={[globalStyles.flexCenter]}>Anime is not in any Collections</div>
+              <div css={[globalStyles.flexCenter]}>
+                Anime is not in any Collections
+              </div>
             )}
           </div>
         </div>

@@ -1,10 +1,9 @@
 import { useState } from "react";
 
-import { useGlobalStorageCtx } from "../context/Context";
+import { useGlobalStorageCtx } from "src/Utils/Context/context";
 
 const useCollectionList = () => {
   const {
-
     GlobalStorageData,
     modalState,
     setModalState,

@@ -9,3 +9,4 @@ export type { buttonProps as ButtonProps } from "./components";
 export type { animeListProps as AnimeListProps } from "./components";
 export type { modalModel as ModalModel } from "./components";
 export type { genreContainerProps as GenreContainerProps } from "./components";
+export type { globalStorageDataProps as GlobalStorageDataProps } from "./global";

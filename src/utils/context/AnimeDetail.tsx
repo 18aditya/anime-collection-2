@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 import type {
   AddAnimeFunction,
   MediaDetail,
-} from "src/utils/interface/Interface";
+} from "src/Utils/Interface/interface";
 import { ApolloError } from "@apollo/client";
 
 interface AnimeDetailHooks {

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { GlobalStorageDataProps } from "../context/GlobalStorage";
-
+import { GlobalStorageDataProps } from "src/Utils/Interface/interface";
 
 const useGlobalStorage = () => {
   //layout component
@@ -65,7 +64,6 @@ const useGlobalStorage = () => {
     }
     setLoading(false);
   }, []);
-
 
   const updateGlobalStorage = (newData: GlobalStorageDataProps) => {
     const collArray = GlobalStorageData;

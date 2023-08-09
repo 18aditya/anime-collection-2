@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 import { RouterProvider } from "react-router-dom";
 import router from "./Routes/routes";
 import GlobalStyles from "./globalStyles";
-import { client } from "./utils/api/api";
+import { client } from "src/Utils/Api/api";
 import { ApolloProvider } from "@apollo/client";
-import { GlobalStorageProvider } from "./utils/context/Context";
-import "./utils/styles/fonts.css";
+import { GlobalStorageProvider } from "./Utils/Context/context";
+import "./Utils/styles/fonts.css";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

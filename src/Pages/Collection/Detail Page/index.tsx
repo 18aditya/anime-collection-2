@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 
-import * as globalStyles from "src/utils/styles/global";
+import * as globalStyles from "src/Utils/styles/global";
 import { css } from "@emotion/react";
 import { useLocation } from "react-router-dom";
-import { useCollectionDetail } from "src/utils/hooks/Hooks";
+import { useCollectionDetail } from "src/Utils/Hooks/hooks";
 import {
   CollectionDetailCtx,
   useCollectionDetailCtx,
-} from "src/utils/context/Context";
+} from "src/Utils/Context/context";
 import { AnimeList, Modal } from "src/Components/components";
 
 export default function Page() {

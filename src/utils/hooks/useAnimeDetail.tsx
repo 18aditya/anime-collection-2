@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { getAnimeDetailByID } from "../api/query/query";
+import { getAnimeDetailByID } from "src/Utils/Api/query/query";
 import type {
   MediaDetail,
   AddAnimeFunction,
-} from "src/utils/interface/Interface";
-import { useGlobalStorageCtx } from "../context/Context";
+} from "src/Utils/Interface/interface";
+import { useGlobalStorageCtx } from "src/Utils/Context/context";
 import { useNavigate } from "react-router-dom";
 
 const useAnimeDetail = (id: number) => {
@@ -74,7 +74,7 @@ const useAnimeDetail = (id: number) => {
     const temp = GlobalStorageData.find((dt) => dt.id === collId);
 
     if (temp) {
-      if (temp.animes.find((dt) => dt.id === id)) {
+      if (temp.animes.find((dt: any) => dt.id === id)) {
         return;
       }
 

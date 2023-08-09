@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
-import * as globalStyles from "../../../utils/styles/global";
-import { Pagination, AnimeList } from "../../../Components/components";
+import * as globalStyles from "src/Utils/styles/global";
+import { Pagination, AnimeList } from "src/Components/components";
 
-import useAnimeData from "../../../utils/hooks/useAnimeList";
-import { AnimeListCtx, useAnimeListCtx } from "src/utils/context/Context";
+import useAnimeData from "src/Utils/Hooks/useAnimeList";
+import { AnimeListCtx, useAnimeListCtx } from "src/Utils/Context/context";
 
 export default function Page() {
   const useAnimeListContext = useAnimeData();

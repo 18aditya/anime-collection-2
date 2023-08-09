@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -21,10 +17,12 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "../../utils/interface/*": ["src/utils/interface"]
+      "../../utils/interface/*": ["src/Utils/Interface/*"],
+      "../../Components/*": ["src/Components/*"],
+      "../../utils/api/*": ["src/Utils/Api/*"],
+      "../../utils/context/*": ["src/Utils/Context/*"],
+      "../../utils/hooks/*": ["src/Utils/Hooks/*"]
     }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

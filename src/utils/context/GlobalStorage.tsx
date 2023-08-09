@@ -1,13 +1,6 @@
 import { createContext, useContext } from "react";
-import useGlobalStorage from "../hooks/useGlobalStorage";
-import type { Media } from "src/utils/interface/Interface";
-
-export interface GlobalStorageDataProps {
-  id: number;
-  collection_title: string;
-  animes: Array<Media>;
-  created_at: Date;
-}
+import { useGlobalStorage } from "src/Utils/Hooks/hooks";
+import type { GlobalStorageDataProps } from "src/Utils/Interface/interface";
 
 export interface GlobalStorageContextType {
   GlobalStorageData: Array<GlobalStorageDataProps>;
@@ -28,7 +21,7 @@ export interface GlobalStorageContextType {
   collectionName: string;
   formError: string;
   loading: Boolean;
-  setAddModal:React.Dispatch<React.SetStateAction<Boolean>>,
+  setAddModal: React.Dispatch<React.SetStateAction<Boolean>>;
 }
 
 interface GlobalStorageProviderProps {

@@ -2,7 +2,7 @@
 import { css, keyframes } from "@emotion/react";
 import { AiOutlineClose } from "react-icons/ai";
 
-import { ModalModel } from "src/utils/interface/Interface";
+import { ModalModel } from "src/Utils/Interface/interface";
 
 const Modal = ({ children, modalState, setModalState }: ModalModel) => {
   return (
@@ -17,7 +17,7 @@ const Modal = ({ children, modalState, setModalState }: ModalModel) => {
           height: 1000000px;
           z-index: 100000;
         `}
-        onClick={()=>setModalState()}
+        onClick={() => setModalState()}
       ></div>
       <div
         css={css`
@@ -45,7 +45,7 @@ const Modal = ({ children, modalState, setModalState }: ModalModel) => {
             justify-content: end;
           `}
         >
-          <AiOutlineClose onClick={()=>setModalState()} />
+          <AiOutlineClose onClick={() => setModalState()} />
         </div>
         {children}
       </div>

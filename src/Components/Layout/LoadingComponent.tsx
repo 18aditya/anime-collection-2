@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
-import { CircularLoading } from "../components";
-import * as globalStyles from "../../utils/styles/global";
+import { CircularLoading } from "src/Components/components";
+import * as globalStyles from "src/Utils/styles/global";
 
 const LoadingComponent = () => {
   return (

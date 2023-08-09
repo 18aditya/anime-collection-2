@@ -1,4 +1,4 @@
-import type {Media } from "src/utils/interface/Interface";
+import type { Media } from "src/Utils/Interface/interface";
 
 // export interface animeCollectionProps {
 //   id: number | undefined;

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-import { useGlobalStorageCtx } from "../context/Context";
+import { useGlobalStorageCtx } from "src/Utils/Context/context";
 import { useNavigate } from "react-router-dom";
-import { GlobalStorageDataProps } from "../context/GlobalStorage";
+import { GlobalStorageDataProps } from "src/Utils/Interface/interface";
 
 const useCollectionDetail = (id: number) => {
   const {

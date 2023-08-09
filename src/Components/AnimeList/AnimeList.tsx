@@ -1,11 +1,10 @@
 /** @jsxImportSource @emotion/react */
 
-import * as globalStyles from "../../utils/styles/global";
+import * as globalStyles from "src/Utils/styles/global";
 import { css } from "@emotion/react";
 import { Link, useLocation } from "react-router-dom";
-import { CircularLoading } from "../components";
-import { AnimeListProps } from "src/utils/interface/Interface";
-
+import { CircularLoading } from "src/Components/components";
+import { AnimeListProps } from "src/Utils/Interface/interface";
 
 export default function AnimeList({
   loading,

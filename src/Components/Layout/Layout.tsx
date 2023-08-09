@@ -4,10 +4,10 @@ import { navBarConstant } from "../../constant/navbar";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { css } from "@emotion/react";
-import * as globalStyles from "../../utils/styles/global";
-import { useGlobalStorageCtx } from "../../utils/context/Context";
+import * as globalStyles from "src/Utils/styles/global";
+import { useGlobalStorageCtx } from "src/Utils/Context/context";
 import { useLocation } from "react-router-dom";
-import { Modal } from "../components";
+import { Modal } from "src/Components/components";
 export default function Layout(): JSX.Element {
   const {
     modalState,
@@ -52,7 +52,7 @@ export default function Layout(): JSX.Element {
                 globalStyles.flexRow,
                 globalStyles.flexCenter,
                 css`
-                font-family: "Geek", sans-serif;
+                  font-family: "Geek", sans-serif;
                   display: flex;
                   height: 100%;
                   gap: 6px;
@@ -68,7 +68,6 @@ export default function Layout(): JSX.Element {
               ]}
               onClick={handleShowModal}
             >
-              
               Add new collection
             </button>
           )}

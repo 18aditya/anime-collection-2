@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-import { GlobalStorageDataProps } from "./GlobalStorage";
+import { GlobalStorageDataProps } from "src/Utils/Interface/interface";
 
 export interface CollectionListHooks {
   GlobalStorageData: Array<GlobalStorageDataProps>;

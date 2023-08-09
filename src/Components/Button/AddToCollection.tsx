@@ -1,10 +1,9 @@
 /** @jsxImportSource @emotion/react */
 
-import * as globalStyles from "../../utils/styles/global";
+import * as globalStyles from "src/Utils/styles/global";
 import { css } from "@emotion/react";
 import { AiOutlineHeart } from "react-icons/ai";
-import { ButtonProps } from "src/utils/interface/Interface";
-
+import { ButtonProps } from "src/Utils/Interface/interface";
 
 const AddToCollection = ({
   setModalState,
@@ -26,7 +25,7 @@ const AddToCollection = ({
           &:hover {
             background-color: #f0f0f0;
           }
-        
+
           width: ${styleDefault.width};
           margin-block: ${styleDefault.marginBlock};
           display: ${styleDefault.display};
