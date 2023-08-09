@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GetAnimeDetailByID } from "src/Utils/Conn/index";
+import { GetAnimeDetailByID } from "src/Utils/Api";
 import type { MediaDetail, AddAnimeFunction } from "src/Utils/Interface";
 import { useGlobalStorageCtx } from "src/Utils/Context";
 import { useNavigate } from "react-router-dom";
