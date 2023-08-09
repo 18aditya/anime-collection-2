@@ -5,7 +5,7 @@ import router from "./Routes/routes";
 import GlobalStyles from "./globalStyles";
 import { client } from "src/Utils/Api/api";
 import { ApolloProvider } from "@apollo/client";
-import { GlobalStorageProvider } from "./Utils/Context/context";
+import { GlobalStorageProvider } from "src/Utils/Context/context";
 import "./Utils/styles/fonts.css";
 
 const rootElement = document.getElementById("root");
