@@ -1,21 +1,8 @@
 // globalStyles.tsx
 
-import { Global } from "@emotion/react";
-import { fontStyles } from "src/Utils/Styles";
+import { Global, css } from "@emotion/react";
+import { fontStyles, bodyStyles } from "src/Utils/Styles";
 
-const GlobalStyles: React.FC = () => (
-  <Global
-    styles={[
-      fontStyles,
-      {
-        body: {
-          margin: 0,
-          padding: 0,
-          fontFamily: "'Geek', sans-serif",
-        },
-      },
-    ]}
-  />
-);
+const GlobalStyles: React.FC = () => <Global styles={ bodyStyles } />;
 
 export default GlobalStyles;

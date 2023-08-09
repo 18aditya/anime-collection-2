@@ -32,17 +32,38 @@ export const layoutContainer = [
 ];
 
 export const fontStyles = css`
-  @font-face {
+  font-face {
     font-family: "Bits";
     src: url("../../../public/ARCADE.TTF") format("truetype");
     font-weight: normal;
     font-style: normal;
   }
 
-  @font-face {
+  font-face {
     font-family: "Geek";
     src: url("../../../public/JetBrainsMono-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
+  }
+`;
+
+export const bodyStyles = css`
+  @font-face {
+    font-family: "Bits";
+    src: url("/ARCADE.TTF") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Geek";
+    src: url("/JetBrainsMono-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Geek", sans-serif;
   }
 `;
